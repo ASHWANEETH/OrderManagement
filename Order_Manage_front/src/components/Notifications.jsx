@@ -1,7 +1,7 @@
 //fetch NOTIFICATION FROM BACKEND
 export const fetchNotifications = async () => {
   try {
-    const resp = await fetch("http://localhost:5174/notifications");
+    const resp = await fetch("https://order-management-l9mt-m6f38svut-ashwaneeths-projects.vercel.app/notifications");
     const data = await resp.json();
     // console.log(data.message); // Logs the message
     return data.message; // Returns the message
@@ -13,7 +13,7 @@ export const fetchNotifications = async () => {
 //POST NOTIFICATION TO BACKEND
 export const postNotification = async (message) => {
   try {
-    const resp = await fetch("http://localhost:5174/notifications", {
+    const resp = await fetch("https://order-management-l9mt-m6f38svut-ashwaneeths-projects.vercel.app/notifications", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

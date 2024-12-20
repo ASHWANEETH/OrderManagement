@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 export const fetchBills = async () => {
   try {
-    const resp = await fetch("http://localhost:5174/bills");
+    const resp = await fetch("https://order-management-l9mt-m6f38svut-ashwaneeths-projects.vercel.app/bills");
     const data = await resp.json();
     // console.log(data[0]); // Logs the message
     return data; // Returns the message
@@ -12,7 +12,7 @@ export const fetchBills = async () => {
 
 export const postBills = async (message) => {
   try {
-    await fetch("http://localhost:5174/bills", {
+    await fetch("https://order-management-l9mt-m6f38svut-ashwaneeths-projects.vercel.app/bills", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export const postBills = async (message) => {
 export const RemBill = async (message) => {
   console.log(message);
   try {
-    await fetch("http://localhost:5174/bills",
+    await fetch("https://order-management-l9mt-m6f38svut-ashwaneeths-projects.vercel.app/bills",
       {
         method:"DELETE",
         headers: {
