@@ -1,0 +1,12 @@
+[
+  { "item": "Pizza", "price": 12.99 },
+  { "item": "Burger", "price": 8.49 },
+  { "item": "Pasta", "price": 10.99 },
+  { "item": "Salad", "price": 6.99 },
+  { "item": "Sushi", "price": 14.99 },
+  { "item": "Steak", "price": 22.99 },
+  { "item": "Sandwich", "price": 7.99 },
+  { "item": "Fries", "price": 3.49 },
+  { "item": "Chicken Wings", "price": 9.99 },
+  { "item": "Tacos", "price": 4.99 }
+]
