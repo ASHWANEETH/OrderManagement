@@ -27,7 +27,7 @@ app.use("/orders", orderRoutes);
 app.use("/bills", billRoutes);
 
 app.get("/",(req,res)=>{
-  res.json({msg:"hi"})
+  res.json({msg:port})
 })
 
 // Start the server
