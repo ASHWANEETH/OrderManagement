@@ -13,7 +13,7 @@ const port = process.env.PORT || 5174;
 connectDB();
 
 // Middleware
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: "https://order-management-len0q5d4f-ashwaneeths-projects.vercel.app" }));
 app.use(express.json());
 
 // Routes
