@@ -21,6 +21,10 @@ app.use("/notifications", notificationRoutes);
 app.use("/orders", orderRoutes);
 app.use("/bills", billRoutes);
 
+app.get("/",(req,res)=>{
+  res.json({msg:"hi"})
+})
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
