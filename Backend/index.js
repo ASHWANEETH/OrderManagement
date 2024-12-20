@@ -7,7 +7,7 @@ const orderRoutes = require("./routes/orderRoutes");
 const billRoutes = require("./routes/billRoutes");
 
 const app = express();
-const port = process.env.PORT || 5174;
+const port = process.env.PORT || 8000;
 
 // Connect to MongoDB
 connectDB();
