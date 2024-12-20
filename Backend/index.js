@@ -12,12 +12,9 @@ const port = process.env.PORT || 5174;
 // Connect to MongoDB
 connectDB();
 
-// Middleware
-// app.use(cors({ origin: "https://order-management-len0q5d4f-ashwaneeths-projects.vercel.app" }));
 app.use(cors({
   origin: 'order-management-three.vercel.app', 
   methods: 'GET,POST,PUT,DELETE',
-  credentials: true // If cookies or authentication headers are needed
 }));
 app.use(express.json());
 
