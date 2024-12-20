@@ -4,7 +4,7 @@
 //fetch orders
 export const fetchOrders = async () => {
   try {
-    const resp = await fetch("https://order-management-l9mt-m6f38svut-ashwaneeths-projects.vercel.app/orders");
+    const resp = await fetch("order-management-l9mt.vercel.app/orders");
     const data = await resp.json();
     // console.log(data); // Logs the message
     return data; // Returns the message
@@ -18,7 +18,7 @@ export const fetchOrders = async () => {
 export const AddItem = async (message) => {
   // console.log(message);
   try {
-    await fetch("https://order-management-l9mt-m6f38svut-ashwaneeths-projects.vercel.app/orders",
+    await fetch("order-management-l9mt.vercel.app/orders",
       {
         method:"PUT",
         headers: {
@@ -38,7 +38,7 @@ export const AddItem = async (message) => {
 export const RemItem = async (message) => {
   // console.log(message);
   try {
-    await fetch("https://order-management-l9mt-m6f38svut-ashwaneeths-projects.vercel.app/orders",
+    await fetch("order-management-l9mt.vercel.app/orders",
       {
         method:"DELETE",
         headers: {
