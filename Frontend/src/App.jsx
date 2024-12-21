@@ -28,7 +28,7 @@ export const App = () => {
   const fetchDataNoti = async () => {
     const data = await fetchNotifications();  // Wait for the async function to resolve
     // console.log(data);  // Logs the message
-    setNotifications([]);
+    
     setNotifications((prev) => [
       ...prev,
       data,
