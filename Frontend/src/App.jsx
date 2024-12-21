@@ -316,7 +316,7 @@ const handlePayment = async (table) => {
           <div style={{ marginBottom: "20px" }}>
             {suggestions.map((item, index) => (
               <div key={index} style={{ padding: "5px", marginBottom: "10px", fontWeight: "bold" }}>
-                {item.item} - ${item.price.toFixed(2)}
+                {item.item} - ₹{item.price.toFixed(2)}
                 <button
                   onClick={() => addToOrder(item)}
                   style={{
@@ -396,11 +396,11 @@ const handlePayment = async (table) => {
           <ul>
             {bill[table].items.map((item, index) => (
               <li key={index}>
-                {item.itemName} - Qty: {item.quantity} - ${item.quantity * item.price}
+                {item.itemName} - Qty: {item.quantity} - ₹{item.quantity * item.price}
               </li>
             ))}
           </ul>
-          <h4 style={{ fontWeight: "bold" }}>Total: ${bill[table].total.toFixed(2)}</h4>
+          <h4 style={{ fontWeight: "bold" }}>Total: ₹{bill[table].total.toFixed(2)}</h4>
           <button
             onClick={() => handlePayment(table)}
             style={{
