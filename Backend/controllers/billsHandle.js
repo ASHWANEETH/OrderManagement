@@ -39,7 +39,6 @@ async function handleRemBill(req,res) {
     const deletedBill = await Bill.findOneAndDelete({ tableId: tableId });
     res.status(201).end();
     if (deletedBill) {
-      console.log("Deleted bill:", deletedBill);
     } else {
       console.log("No bill found for Table ID:", tableId);
     }
