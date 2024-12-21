@@ -217,7 +217,7 @@ const handlePayment = async (table) => {
         </div>
       )}
 
-      <h1 style={{ textAlign: "center", color: "#3F51B5", fontWeight: "bold" }}>Restaurant Management</h1>
+      <h1 style={{ textAlign: "center", color: "#3F51B5", fontWeight: "bold" }}>Restaurant Order Management</h1>
 
       {/* Role Selection */}
       <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
