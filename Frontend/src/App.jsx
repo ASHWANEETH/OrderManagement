@@ -80,7 +80,7 @@ export const App = () => {
   // Fetch notifications only once on component mount
 useEffect(() => {
   fetchDataNoti();
-}, []);
+}, [orders]);
 
 
 
