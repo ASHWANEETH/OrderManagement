@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon index"
+    "dev":"node Backend/index.js",
+    "build":"npm install && npm install --prefix Frontend && npm run build --prefix Frontend",
+    "start":"nodemon Backend/index.js"
   },
   "author": "",
   "license": "ISC",
