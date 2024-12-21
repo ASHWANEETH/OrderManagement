@@ -15,7 +15,7 @@ export const App = () => {
   const [quantity, setQuantity] = useState(1);
   const [suggestions, setSuggestions] = useState([]); // Suggestions list
   const [bill, setBill] = useState({}); // Bill display for each table
-  const [notifications, setNotifications] = useState([]); // List of notifications
+  const [notifications, setNotifications] = useState([" "]); // List of notifications
 
   // Fetch orders and bills whenever a relevant change occurs
   useEffect(() => {
@@ -217,7 +217,7 @@ const handlePayment = async (table) => {
         </div>
       )}
 
-      <h1 style={{ textAlign: "center", color: "#3F51B5", fontWeight: "bold" }}>Restaurant Order Management</h1>
+      <h1 style={{ textAlign: "center", color: "#3F51B5", fontWeight: "bold" }}>Order Management</h1>
 
       {/* Role Selection */}
       <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
