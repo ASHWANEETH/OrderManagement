@@ -1,7 +1,7 @@
 //fetch NOTIFICATION FROM BACKEND
 export const fetchNotifications = async () => {
   try {
-    const resp = await fetch("order-management-l9mt.vercel.app/notifications");
+    const resp = await fetch("http://localhost:8000/notifications");
     const data = await resp.json();
     // console.log(data.message); // Logs the message
     return data.message; // Returns the message
