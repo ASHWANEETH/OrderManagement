@@ -79,13 +79,8 @@ const refreshData = async () => {
 
 // Fetch orders and bills whenever a relevant change occurs
 useEffect(() => {
-  const intervalId = setInterval(() => {
-    refreshData();
-  }, 1000); // Refresh every second
-
-  // Cleanup interval on component unmount
-  return () => clearInterval(intervalId);
-}, []);  // Now, this will trigger when these states change
+refreshData()
+}, [selectedTable, orders, bill,notifications]);  // Now, this will trigger when these states change
 
 
 
@@ -217,7 +212,7 @@ const handlePayment = async (table) => {
         </div>
       )}
 
-      <h1 style={{ textAlign: "center", color: "#3F51B5", fontWeight: "bold" }}>Order Management
+      <h1 style={{ textAlign: "center", color: "#3F51B5", fontWeight: "bold" }}>Order Management.
       </h1>
 
       {/* Role Selection */}
