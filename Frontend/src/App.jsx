@@ -17,18 +17,12 @@ export const App = () => {
   const [bill, setBill] = useState({}); // Bill display for each table
   const [notifications, setNotifications] = useState([" "]); // List of notifications
 
-  // Fetch orders and bills whenever a relevant change occurs
-  useEffect(() => {
-  fetchDataOrder();
-  fetchDataBills();
-}, [selectedTable, orders, bill]);  // Now, this will trigger when these states change
 
 
   //fetch Notification==============================================================
   const fetchDataNoti = async () => {
     const data = await fetchNotifications();  // Wait for the async function to resolve
     // console.log(data);  // Logs the message
-    
     setNotifications((prev) => [
       ...prev,
       data,
@@ -76,12 +70,18 @@ export const App = () => {
     
   };
 
+const refreshData = async () => {
+  await fetchDataNoti();
+  await fetchDataOrder();
+  await fetchDataBills();
+ };
 
-  //REFRESH ON LOAD==========================================================
-  // Fetch notifications only once on component mount
+
+// Fetch orders and bills whenever a relevant change occurs
 useEffect(() => {
-  fetchDataNoti();
-}, [orders]);
+refreshData()
+}, [selectedTable, orders, bill]);  // Now, this will trigger when these states change
+
 
 
 
@@ -123,12 +123,12 @@ const addToOrder = async (menuItem) => {
   await AddItem(newItem);
 
   // Trigger data refresh for orders and bills
-  fetchDataOrder();
-  fetchDataBills();
 
   setItemName("");
   setQuantity(1);
   setSuggestions([]);
+
+  refreshData();
 };
 
 // Remove item from order
@@ -148,8 +148,7 @@ const removeItem = async (index) => {
   postNotification(notificationMessage);
 
   // Trigger data refresh for orders and bills
-  fetchDataOrder();
-  fetchDataBills();
+  refreshData();
 };
 
 // Create bill and generate total
@@ -173,7 +172,7 @@ const createBill = async () => {
   await postBills(newBill);
 
   // Trigger data refresh for orders and bills after bill creation
-  setOrders({});
+  refreshData();
 };
 
 // Handle Payment
@@ -186,7 +185,7 @@ const handlePayment = async (table) => {
   alert(`Payment done for Table ${table}.`);
 
   // Trigger data refresh for orders and bills after payment
-  setBill({});
+  refreshData();
 };
 
 
@@ -213,7 +212,8 @@ const handlePayment = async (table) => {
         </div>
       )}
 
-      <h1 style={{ textAlign: "center", color: "#3F51B5", fontWeight: "bold" }}>Order Management</h1>
+      <h1 style={{ textAlign: "center", color: "#3F51B5", fontWeight: "bold" }}>Order Management.
+      </h1>
 
       {/* Role Selection */}
       <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
