@@ -6,8 +6,13 @@ const notificationRoutes = require("./routes/notificationRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const billRoutes = require("./routes/billRoutes");
 
+import path from "path";
+
+
 const app = express();
 const port = process.env.PORT || 8000;
+
+const _dirname = path.resolve();
 
 // Connect to MongoDB
 connectDB();
@@ -23,9 +28,7 @@ app.use("/notifications", notificationRoutes);
 app.use("/orders", orderRoutes);
 app.use("/bills", billRoutes);
 
-app.get("/",(req,res)=>{
-  res.json({msg:port})
-})
+app.use(express.static(path.join(_dirname,"/Frontend/dist")))
 
 // Start the server
 app.listen(port, () => {
