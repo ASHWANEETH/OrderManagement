@@ -35,7 +35,7 @@ export const App = () => {
     ]);
 
     setTimeout(() => {
-      setNotifications([]);
+      setNotifications([" "]);
     }, 2000);
   };
 
