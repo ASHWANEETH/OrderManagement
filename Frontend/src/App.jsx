@@ -33,10 +33,6 @@ export const App = () => {
       ...prev,
       data,
     ]);
-
-    setTimeout(() => {
-      setNotifications([" "]);
-    }, 2000);
   };
 
 
