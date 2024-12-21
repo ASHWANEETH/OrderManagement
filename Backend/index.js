@@ -18,7 +18,7 @@ const _dirname = path.resolve();
 connectDB();
 
 app.use(cors({
-  origin: 'order-management-three.vercel.app', 
+  origin: 'https://ordermanagement-cagn.onrender.com', 
   methods: 'GET,POST,PUT,DELETE',
 }));
 app.use(express.json());

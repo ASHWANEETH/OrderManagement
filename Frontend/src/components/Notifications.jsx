@@ -1,7 +1,7 @@
 //fetch NOTIFICATION FROM BACKEND
 export const fetchNotifications = async () => {
   try {
-    const resp = await fetch("http://localhost:8000/notifications");
+    const resp = await fetch("https://ordermanagement-cagn.onrender.com/notifications");
     const data = await resp.json();
     // console.log(data.message); // Logs the message
     return data.message; // Returns the message
@@ -13,7 +13,7 @@ export const fetchNotifications = async () => {
 //POST NOTIFICATION TO BACKEND
 export const postNotification = async (message) => {
   try {
-    const resp = await fetch("order-management-l9mt.vercel.app/notifications", {
+    const resp = await fetch("https://ordermanagement-cagn.onrender.com/notifications", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

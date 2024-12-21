@@ -4,7 +4,7 @@
 //fetch orders
 export const fetchOrders = async () => {
   try {
-    const resp = await fetch("http://localhost:8000/orders");
+    const resp = await fetch("https://ordermanagement-cagn.onrender.com/orders");
     const data = await resp.json();
     // console.log(data); // Logs the message
     return data; // Returns the message
@@ -18,7 +18,7 @@ export const fetchOrders = async () => {
 export const AddItem = async (message) => {
   // console.log(message);
   try {
-    await fetch("http://localhost:8000/orders",
+    await fetch("https://ordermanagement-cagn.onrender.com/orders",
       {
         method:"PUT",
         headers: {
@@ -38,7 +38,7 @@ export const AddItem = async (message) => {
 export const RemItem = async (message) => {
   // console.log(message);
   try {
-    await fetch("http://localhost:8000/orders",
+    await fetch("https://ordermanagement-cagn.onrender.com/orders",
       {
         method:"DELETE",
         headers: {
