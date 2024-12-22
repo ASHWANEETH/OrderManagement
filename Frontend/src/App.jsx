@@ -243,8 +243,10 @@ const handlePayment = async (table) => {
             padding: "10px 20px",
             borderRadius: "5px",
             boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-            fontSize: "10px",
+            fontSize: "14px",
+            fontWeight:"bold",
             zIndex: 1000,
+            alignContent:"center"
           }}
         >
           {notifications[notifications.length - 1]}
