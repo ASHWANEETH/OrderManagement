@@ -146,16 +146,16 @@ const addToOrder = async (menuItem) => {
       "price": menuItem.price,
     }]
   };
-
+  
+  setItemName("");
+  setQuantity(1);
+  setSuggestions([]);
   // Add Item Request-----------------------------------
   await AddItem(newItem);
 
   // Trigger data refresh for orders and bills
   refreshData();
 
-  setItemName("");
-  setQuantity(1);
-  setSuggestions([]);
 
 };
 
