@@ -228,7 +228,7 @@ const handlePayment = async (table) => {
   return (
   
     <div style={{ fontFamily: "Arial, sans-serif", padding: "20px", backgroundColor: "#f4f4f4" }}>
-      {loading? <LoadingScreen/>:""}
+      {loading && <LoadingScreen />}
       {/* Notifications */}
       {notifications.length > 0 && (
         <>
@@ -487,7 +487,7 @@ const handlePayment = async (table) => {
 
 const LoadingScreen = () => {
   return (
-    <div style={styles.loadingScreen}>
+    <div style={styles.loadingOverlay}>
       <div style={styles.animationContainer}>
         {/* Lottie Player */}
         <lottie-player
@@ -499,24 +499,25 @@ const LoadingScreen = () => {
           autoplay
         ></lottie-player>
       </div>
-      <p style={styles.loadingText}>Loading...</p>
+      <p style={styles.loadingText}></p>
     </div>
   );
 };
 
 const styles = {
-  loadingScreen: {
+  loadingOverlay: {
     position: "fixed",
     top: 0,
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundColor: "#ffffff", // Light background
+    backgroundColor: "rgba(255, 255, 255, 0.8)", // Semi-transparent white background
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
     zIndex: 9999,
+    backdropFilter: "blur(5px)", // Adds blur to the background
   },
   animationContainer: {
     display: "flex",
@@ -531,6 +532,7 @@ const styles = {
     fontFamily: "Arial, sans-serif",
   },
 };
+
 
 
 
