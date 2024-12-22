@@ -8,7 +8,7 @@ import {fetchBills,postBills,RemBill} from "./components/bills";
 
 
 export const App = () => {
-  const [role, setRole] = useState("waiter"); // waiter or chef
+  const [role, setRole] = useState(""); // waiter or chef
   const [selectedTable, setSelectedTable] = useState(); // Current table
   const [orders, setOrders] = useState({}); // {table: [items]}
   const [itemName, setItemName] = useState("");
@@ -70,6 +70,23 @@ export const App = () => {
     })
     
   };
+
+
+  const TableData = async (table) => {
+    if(!role){
+      alert("select a role first!!");
+      return;
+    }
+    setSelectedTable(table);
+    await refreshData();
+  };
+
+  const RoleData = async (role) => {
+    setRole(role);
+    await refreshData();
+  };
+
+  
 
   const refreshData = async () => {
     setLoading(true);
@@ -134,11 +151,11 @@ const addToOrder = async (menuItem) => {
   await AddItem(newItem);
 
   // Trigger data refresh for orders and bills
+  refreshData();
 
   setItemName("");
   setQuantity(1);
   setSuggestions([]);
-  refreshData();
 
 };
 
@@ -153,13 +170,13 @@ const removeItem = async (index) => {
   };
 
   await RemItem(remItem);
+  
+    // Trigger data refresh for orders and bills
+    refreshData();
 
   const notificationMessage = `Removed item from table ${selectedTable}.`;
   // Post notification to backend-------------------------------------
   postNotification(notificationMessage);
-
-  // Trigger data refresh for orders and bills
-  
 };
 
 // Create bill and generate total
@@ -182,9 +199,11 @@ const createBill = async () => {
 
   await postBills(newBill);
 
-  // Trigger data refresh for orders and bills after bill creation
+  // Trigger data  bills after bill creation
   setOrders({});
+  // Trigger data refresh for orders and bills
   refreshData();
+
 
 };
 
@@ -199,7 +218,9 @@ const handlePayment = async (table) => {
 
   // Trigger data refresh for orders and bills after payment
   setBill({})
+  // Trigger data refresh for orders and bills
   refreshData();
+
 
 };
 
@@ -231,13 +252,13 @@ const handlePayment = async (table) => {
         </>
       )}
 
-      <h1 style={{ textAlign: "center", color: "#3F51B5", fontWeight: "bold" }}>Jai Bhavani Savaji Hotel.
+      <h1 style={{ textAlign: "center", color: "#3F51B5", fontWeight: "bold" }}>Oyeeee
       </h1>
 
       {/* Role Selection */}
       <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
         <button
-          onClick={() => setRole("waiter")}
+          onClick={() => RoleData("waiter")}
           style={{
             padding: "15px",
             backgroundColor: role === "waiter" ? "#3F51B5" : "#ccc",
@@ -253,7 +274,7 @@ const handlePayment = async (table) => {
           Waiter
         </button>
         <button
-          onClick={() => setRole("chef")}
+          onClick={() => RoleData("chef")}
           style={{
             padding: "15px",
             backgroundColor: role === "chef" ? "#512DA8" : "#ccc",
@@ -276,7 +297,7 @@ const handlePayment = async (table) => {
         {[1, 2, 3, 4, 5, 6].map((table) => (
           <button
             key={table}
-            onClick={() => setSelectedTable(table)}
+            onClick={() => TableData(table)}
             style={{
               padding: "15px",
               margin: "5px",
@@ -470,7 +491,7 @@ const LoadingScreen = () => {
           src="https://lottie.host/a32b844d-7c17-49a6-8351-6ece19e10b0a/nvr7EQcsgG.json"
           background="transparent"
           speed="1"
-          style={{ width: "300px", height: "300px" }}
+          style={{ width: "200px", height: "200px" }}
           loop
           autoplay
         ></lottie-player>
