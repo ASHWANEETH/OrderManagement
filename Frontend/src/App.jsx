@@ -508,37 +508,25 @@ const handlePayment = async (table) => {
     <h3 style={{ color: "#512DA8", fontWeight: "bold" }}>All Orders</h3>
     {Object.keys(orders).length > 0 ? (
       Object.entries(orders).map(([tableId, tableOrders]) => (
-        <div
-          key={tableId}
-          style={{
-            marginBottom: "20px",
-            padding: "10px",
-            backgroundColor: "#fff",
-            borderRadius: "5px",
-            boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-          }}
-        >
-          <h4 style={{ color: "#3F51B5", fontWeight: "bold" }}>Table {tableId}</h4>
+        <div key={tableId} style={{ marginBottom: "20px" }}>
+          <h4 style={{ fontWeight: "bold" }}>Table {tableId}</h4>
           <ul>
             {tableOrders.map((item, index) => (
               <li key={index} style={{ fontWeight: "bold" }}>
-                {item.itemName} - Qty: {item.quantity} - ₹{(item.price * item.quantity).toFixed(2)}
+                {item.quantity} x {item.itemName}
               </li>
             ))}
           </ul>
         </div>
       ))
     ) : (
-      <p style={{ textAlign: "center", color: "gray" }}>No orders available.</p>
+      <p style={{ fontStyle: "italic", color: "#999" }}>No orders available.</p>
     )}
   </div>
 )}
-
      
-    </div>
-    
-  );
-  
+    </div>  
+  ); 
 };
 
 const LoadingScreen = () => {
