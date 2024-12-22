@@ -226,8 +226,9 @@ const handlePayment = async (table) => {
 
 
   return (
-    loading ? <div><LoadingScreen /></div> : <div>{
+  
     <div style={{ fontFamily: "Arial, sans-serif", padding: "20px", backgroundColor: "#f4f4f4" }}>
+      {loading? <LoadingScreen/>:""}
       {/* Notifications */}
       {notifications.length > 0 && (
         <>
@@ -477,7 +478,7 @@ const handlePayment = async (table) => {
 
      
     </div>
-    }</div>
+    
   );
   
 };
@@ -491,7 +492,7 @@ const LoadingScreen = () => {
           src="https://lottie.host/a32b844d-7c17-49a6-8351-6ece19e10b0a/nvr7EQcsgG.json"
           background="transparent"
           speed="1"
-          style={{ width: "200px", height: "200px" }}
+          style={{ width: "100px", height: "100px" }}
           loop
           autoplay
         ></lottie-player>
@@ -521,8 +522,8 @@ const styles = {
     alignItems: "center",
   },
   loadingText: {
-    marginTop: "20px",
-    fontSize: "18px",
+    marginTop: "10px",
+    fontSize: "14px",
     fontWeight: "bold",
     color: "#3F51B5",
     fontFamily: "Arial, sans-serif",
