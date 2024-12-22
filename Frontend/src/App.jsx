@@ -492,21 +492,20 @@ const handlePayment = async (table) => {
 
 const LoadingScreen = () => {
   return (
-    <div style={styles.loadingScreen}>
-    <div style={styles.animationContainer}>
-      <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.8/dist/lottie-player.js"></script>
-      <lottie-player 
-        src="https://lottie.host/2dd9369d-dde8-462b-9ea8-47bcb6b4ff8e/qqcw9uKdvv.json" 
-        background="transparent" 
-        speed="1" 
-        style={{ width: "100px", height: "100px" }} 
-        loop 
-        autoplay 
-        >
-      </lottie-player>
+    <div style={styles.loadingOverlay}>
+      <div style={styles.animationContainer}>
+        {/* Lottie Player */}
+        <lottie-player
+          src="https://lottie.host/a32b844d-7c17-49a6-8351-6ece19e10b0a/nvr7EQcsgG.json"
+          background="transparent"
+          speed="1"
+          style={{ width: "100px", height: "100px" }}
+          loop
+          autoplay
+        ></lottie-player>
+      </div>
+      <p style={styles.loadingText}>Loading...</p>
     </div>
-    <p style={styles.loadingText}>Working...</p>
-  </div>
   );
 };
 
@@ -523,7 +522,7 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     zIndex: 9999,
-    backdropFilter: "blur(2px)", // Adds blur to the background
+    backdropFilter: "blur(5px)", // Adds blur to the background
   },
   animationContainer: {
     display: "flex",
