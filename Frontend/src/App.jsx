@@ -205,7 +205,7 @@ const handlePayment = async (table) => {
 
 
   return (
-    loading ? <div>Loading...</div> : <div>{
+    loading ? <div><LoadingScreen /></div> : <div>{
     <div style={{ fontFamily: "Arial, sans-serif", padding: "20px", backgroundColor: "#f4f4f4" }}>
       {/* Notifications */}
       {notifications.length > 0 && (
@@ -460,4 +460,53 @@ const handlePayment = async (table) => {
   );
   
 };
+
+const LoadingScreen = () => {
+  return (
+    <div style={styles.loadingScreen}>
+      <div style={styles.animationContainer}>
+        {/* Lottie Player */}
+        <lottie-player
+          src="https://lottie.host/a32b844d-7c17-49a6-8351-6ece19e10b0a/nvr7EQcsgG.json"
+          background="transparent"
+          speed="1"
+          style={{ width: "300px", height: "300px" }}
+          loop
+          autoplay
+        ></lottie-player>
+      </div>
+      <p style={styles.loadingText}>Loading...</p>
+    </div>
+  );
+};
+
+const styles = {
+  loadingScreen: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "#ffffff", // Light background
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 9999,
+  },
+  animationContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  loadingText: {
+    marginTop: "20px",
+    fontSize: "18px",
+    fontWeight: "bold",
+    color: "#3F51B5",
+    fontFamily: "Arial, sans-serif",
+  },
+};
+
+
 
