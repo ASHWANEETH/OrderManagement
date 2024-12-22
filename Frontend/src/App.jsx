@@ -514,11 +514,11 @@ const handlePayment = async (table) => {
     <h3 style={{ color: "#512DA8", fontWeight: "bold" }}>All Orders</h3>
     {
     Object.keys(Orders).length > 0 ? (
-      Object.entries(Orders).map(([tableId, tableOrders]) => (
+      Object.entries(Orders).map(([tableId, orders]) => (
         <div key={tableId} style={{ marginBottom: "20px" }}>
           <h4 style={{ fontWeight: "bold" }}>Table {tableId}</h4>
           <ul>
-            {tableOrders.map((item, index) => (
+            {orders.map((item, index) => (
               <li key={index} style={{ fontWeight: "bold" }}>
                 {item.quantity} x {item.itemName}
               </li>
