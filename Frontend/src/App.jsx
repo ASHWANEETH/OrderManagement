@@ -125,9 +125,7 @@ export const App = () => {
   };
 
   const RoleData = async (role) => {
-    selectedTable();
     setRole(role);
-    await refreshData();
   };
 
   
