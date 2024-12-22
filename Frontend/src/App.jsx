@@ -82,7 +82,7 @@ export const App = () => {
       alert("select a role first!!");
       return;
     }
-    await setSelectedTable(table);
+    setSelectedTable(table);
     await refreshData();
   };
 
