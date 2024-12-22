@@ -16,6 +16,7 @@ export const App = () => {
   const [suggestions, setSuggestions] = useState([]); // Suggestions list
   const [bill, setBill] = useState({}); // Bill display for each table
   const [notifications, setNotifications] = useState([" "]); // List of notifications
+  const [loading, setLoading] = useState(false);
 
 
 
@@ -70,17 +71,27 @@ export const App = () => {
     
   };
 
-const refreshData = async () => {
-  await fetchDataNoti();
-  await fetchDataOrder();
-  await fetchDataBills();
- };
+  const refreshData = async () => {
+    setLoading(true);
+    try {
+      await Promise.all([fetchDataNoti(), fetchDataOrder(), fetchDataBills()]);
+    } catch (error) {
+      console.error("Error refreshing data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
 
 
 // Fetch orders and bills whenever a relevant change occurs
 useEffect(() => {
-refreshData()
-}, [selectedTable, orders, bill,notifications]);  // Now, this will trigger when these states change
+  const fetchData = async () => {
+    await refreshData();
+  };
+  fetchData();
+}, []);
+  // Now, this will trigger when these states change
 
 
 
@@ -127,6 +138,7 @@ const addToOrder = async (menuItem) => {
   setItemName("");
   setQuantity(1);
   setSuggestions([]);
+  refreshData();
 
 };
 
@@ -172,6 +184,8 @@ const createBill = async () => {
 
   // Trigger data refresh for orders and bills after bill creation
   setOrders({});
+  refreshData();
+
 };
 
 // Handle Payment
@@ -185,10 +199,13 @@ const handlePayment = async (table) => {
 
   // Trigger data refresh for orders and bills after payment
   setBill({})
+  refreshData();
+
 };
 
 
   return (
+    loading ? <div>Loading...</div> : <div>{
     <div style={{ fontFamily: "Arial, sans-serif", padding: "20px", backgroundColor: "#f4f4f4" }}>
       {/* Notifications */}
       {notifications.length > 0 && (
@@ -436,6 +453,8 @@ const handlePayment = async (table) => {
 
      
     </div>
+    }</div>
   );
+  
 };
 
