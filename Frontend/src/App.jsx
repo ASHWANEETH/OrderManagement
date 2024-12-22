@@ -17,7 +17,8 @@ export const App = () => {
   const [bill, setBill] = useState({}); // Bill display for each table
   const [notifications, setNotifications] = useState([" "]); // List of notifications
   const [loading, setLoading] = useState(false);
-
+  
+  let Orders = {};
 
 
   //fetch Notification==============================================================
@@ -66,7 +67,7 @@ export const App = () => {
           [selectedTable]: formattedOrders,
         }));
 
-        return currentOrders;
+        Orders =  currentOrders;
       } else {
         console.warn(`No orders found for table ID: ${selectedTable}`);
       }
@@ -511,8 +512,9 @@ const handlePayment = async (table) => {
     {role === "Show Orders" && (
   <div>
     <h3 style={{ color: "#512DA8", fontWeight: "bold" }}>All Orders</h3>
-    {Object.keys(orders).length > 0 ? (
-      Object.entries(orders).map(([tableId, tableOrders]) => (
+    {
+    Object.keys(Orders).length > 0 ? (
+      Object.entries(Orders).map(([tableId, tableOrders]) => (
         <div key={tableId} style={{ marginBottom: "20px" }}>
           <h4 style={{ fontWeight: "bold" }}>Table {tableId}</h4>
           <ul>
