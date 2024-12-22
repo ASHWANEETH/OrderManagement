@@ -87,6 +87,7 @@ export const App = () => {
   };
 
   const RoleData = async (role) => {
+    selectedTable()
     setRole(role);
     await refreshData();
   };
@@ -268,7 +269,7 @@ const handlePayment = async (table) => {
           onClick={() => RoleData("Take Order")}
           style={{
             padding: "15px",
-            backgroundColor: role === "Take Order" ? "#4d2f2f" : "#ccc",
+            backgroundColor: role === "Take Order" ? "#735454" : "#ccc",
             color: "white",
             margin: "5px",
             borderRadius: "5px",
@@ -284,7 +285,7 @@ const handlePayment = async (table) => {
           onClick={() => RoleData("Show Orders")}
           style={{
             padding: "15px",
-            backgroundColor: role === "Show Orders" ? "#4d2f2f" : "#ccc",
+            backgroundColor: role === "Show Orders" ? "#735454" : "#ccc",
             color: "white",
             margin: "5px",
             borderRadius: "5px",
@@ -491,20 +492,23 @@ const handlePayment = async (table) => {
 
 const LoadingScreen = () => {
   return (
-    <div style={styles.loadingOverlay}>
-      <div style={styles.animationContainer}>
-        {/* Lottie Player */}
-        <lottie-player
-          src="https://lottie.host/a32b844d-7c17-49a6-8351-6ece19e10b0a/nvr7EQcsgG.json"
-          background="transparent"
-          speed="1"
-          style={{ width: "100px", height: "100px" }}
-          loop
-          autoplay
-        ></lottie-player>
-      </div>
-      <p style={styles.loadingText}></p>
+    <div style={styles.loadingScreen}>
+    <div style={styles.animationContainer}>
+      <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.8/dist/lottie-player.js"></script>
+      <lottie-player 
+        src="https://lottie.host/2dd9369d-dde8-462b-9ea8-47bcb6b4ff8e/qqcw9uKdvv.json" 
+        background="#ffffff" 
+        speed="1" 
+        style={{ width: "300px", height: "300px" }} 
+        loop 
+        controls 
+        autoplay 
+        direction="1" 
+        mode="normal">
+      </lottie-player>
     </div>
+    <p style={styles.loadingText}>Working...</p>
+  </div>
   );
 };
 
