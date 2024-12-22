@@ -28,6 +28,11 @@ export const App = () => {
       ...prev,
       data,
     ]);
+
+    setTimeout(() => {
+      setNotifications([" "]); // Reset notifications to an empty or default state
+    }, 3000);
+
   };
 
 
@@ -77,7 +82,7 @@ export const App = () => {
       alert("select a role first!!");
       return;
     }
-    setSelectedTable(table);
+    await setSelectedTable(table);
     await refreshData();
   };
 
@@ -244,7 +249,6 @@ const handlePayment = async (table) => {
             borderRadius: "5px",
             boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
             fontSize: "14px",
-            fontWeight:"bold",
             zIndex: 1000,
             alignContent:"center"
           }}
