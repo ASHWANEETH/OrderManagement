@@ -431,14 +431,14 @@ const handlePayment = async (table) => {
                         backgroundColor: "#F44336", // Red
                         color: "white",
                         border: "none",
-                        padding: "5px",
-                        borderRadius: "5px",
+                        padding: "0 5px",
+                        borderRadius: "2px",
                         fontSize: "16px",
                         marginLeft: "10px",
                         cursor: "pointer",
                       }}
                     >
-                      Remove
+                      X
                     </button>
                   </li>
                 ))}
