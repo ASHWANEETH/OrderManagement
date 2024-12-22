@@ -511,13 +511,13 @@ const styles = {
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundColor: "rgba(255, 255, 255, 0.8)", // Semi-transparent white background
+    // backgroundColor: "rgba(255, 255, 255, 0.8)", // Semi-transparent white background
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
     zIndex: 9999,
-    backdropFilter: "blur(5px)", // Adds blur to the background
+    backdropFilter: "blur(2px)", // Adds blur to the background
   },
   animationContainer: {
     display: "flex",
