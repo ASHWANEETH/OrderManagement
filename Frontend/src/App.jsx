@@ -9,7 +9,7 @@ import {fetchBills,postBills,RemBill} from "./components/bills";
 
 export const App = () => {
   const [role, setRole] = useState("waiter"); // waiter or chef
-  const [selectedTable, setSelectedTable] = useState(1); // Current table
+  const [selectedTable, setSelectedTable] = useState(); // Current table
   const [orders, setOrders] = useState({}); // {table: [items]}
   const [itemName, setItemName] = useState("");
   const [quantity, setQuantity] = useState(1);
@@ -128,7 +128,6 @@ const addToOrder = async (menuItem) => {
   setQuantity(1);
   setSuggestions([]);
 
-  refreshData();
 };
 
 // Remove item from order
@@ -148,7 +147,7 @@ const removeItem = async (index) => {
   postNotification(notificationMessage);
 
   // Trigger data refresh for orders and bills
-  refreshData();
+  
 };
 
 // Create bill and generate total
@@ -172,7 +171,7 @@ const createBill = async () => {
   await postBills(newBill);
 
   // Trigger data refresh for orders and bills after bill creation
-  refreshData();
+  setOrders({});
 };
 
 // Handle Payment
@@ -185,7 +184,7 @@ const handlePayment = async (table) => {
   alert(`Payment done for Table ${table}.`);
 
   // Trigger data refresh for orders and bills after payment
-  refreshData();
+  setBill({})
 };
 
 
@@ -204,7 +203,7 @@ const handlePayment = async (table) => {
             padding: "10px 20px",
             borderRadius: "5px",
             boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-            fontSize: "16px",
+            fontSize: "10px",
             zIndex: 1000,
           }}
         >
@@ -212,7 +211,7 @@ const handlePayment = async (table) => {
         </div>
       )}
 
-      <h1 style={{ textAlign: "center", color: "#3F51B5", fontWeight: "bold" }}>Order Management.
+      <h1 style={{ textAlign: "center", color: "#3F51B5", fontWeight: "bold" }}>Jai Bhavani Savaji Hotel
       </h1>
 
       {/* Role Selection */}
