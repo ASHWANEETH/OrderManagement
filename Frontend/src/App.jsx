@@ -328,7 +328,7 @@ const handlePayment = async (table) => {
       </div>
 
       {/* Table Selection */}
-      {role && (
+      {role == "Take Order" && (
         <div>
         <h3 style={{ textAlign: "center", color: "#512DA8", fontWeight: "bold" }}>Select Table</h3>
         <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", marginBottom: "20px" }}>
@@ -503,7 +503,7 @@ const handlePayment = async (table) => {
       )}
 
       {/* Show Orders View */}
-      {role === "Show Orders" && (
+    {role === "Show Orders" && (
   <div>
     <h3 style={{ color: "#512DA8", fontWeight: "bold" }}>All Orders</h3>
     {Object.keys(orders).length > 0 ? (
