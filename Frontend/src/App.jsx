@@ -65,6 +65,8 @@ export const App = () => {
           ...prev,
           [selectedTable]: formattedOrders,
         }));
+
+        return currentOrders;
       } else {
         console.warn(`No orders found for table ID: ${selectedTable}`);
       }
@@ -72,6 +74,9 @@ export const App = () => {
       console.error('Error fetching orders:', error);
     }
   };
+
+
+  
 
   useEffect(() => {
     if (selectedTable) {
