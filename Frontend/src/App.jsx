@@ -30,7 +30,7 @@ export const App = () => {
     ]);
 
     setTimeout(() => {
-      setNotifications([" "]); // Reset notifications to an empty or default state
+      setNotifications(["📌"]); // Reset notifications to an empty or default state
     }, 3000);
 
   };
@@ -87,8 +87,8 @@ export const App = () => {
   };
 
   const RoleData = async (role) => {
-    setRole(role);
     selectedTable();
+    setRole(role);
     await refreshData();
   };
 
