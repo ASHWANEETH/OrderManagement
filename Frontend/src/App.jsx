@@ -465,7 +465,7 @@ const handlePayment = async (table) => {
       {/* Chef View */}
       {role === "chef" && selectedTable && (
         <div>
-          <h3 style={{ color: "#512DA8", fontWeight: "bold" }}>Ongoing Orders for Table {selectedTable}</h3>
+          <h3 style={{ color: "#512DA8", fontWeight: "bold" }}> Orders for Table {selectedTable}</h3>
           <ul>
             {orders[selectedTable]?.map((item, index) => (
               <li key={index} style={{ fontWeight: "bold" }}>
