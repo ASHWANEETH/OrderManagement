@@ -497,14 +497,12 @@ const LoadingScreen = () => {
       <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.8/dist/lottie-player.js"></script>
       <lottie-player 
         src="https://lottie.host/2dd9369d-dde8-462b-9ea8-47bcb6b4ff8e/qqcw9uKdvv.json" 
-        background="#ffffff" 
+        background="transparent" 
         speed="1" 
-        style={{ width: "300px", height: "300px" }} 
+        style={{ width: "100px", height: "100px" }} 
         loop 
-        controls 
         autoplay 
-        direction="1" 
-        mode="normal">
+        >
       </lottie-player>
     </div>
     <p style={styles.loadingText}>Working...</p>
