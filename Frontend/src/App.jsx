@@ -22,59 +22,98 @@ export const App = () => {
 
   //fetch Notification==============================================================
   const fetchDataNoti = async () => {
-    const data = await fetchNotifications();  // Wait for the async function to resolve
-    // console.log(data);  // Logs the message
-    setNotifications((prev) => [
-      ...prev,
-      data,
-    ]);
-
-    setTimeout(() => {
-      setNotifications(["📌"]); // Reset notifications to an empty or default state
-    }, 3000);
-
+    try {
+      // Fetch new notifications
+      const data = await fetchNotifications();
+  
+      // Update notifications with the new data
+      setNotifications((prev) => [...prev, data]);
+  
+      // Reset notifications after 3 seconds
+      setTimeout(() => {
+        setNotifications((prev) => prev.length > 0 ? ["📌"] : prev); // Ensure no overwriting if notifications are added during the delay
+      }, 3000);
+    } catch (error) {
+      console.error("Error fetching notifications:", error);
+    }
   };
+  
 
 
   //fetch Orders===================================================================
   const fetchDataOrder = async () => {
     try {
-      // Step 1: Fetch the current orders for the selected table
-      const currentOrders = await fetchOrders(); // This will fetch orders
-      const {orders} = currentOrders.find((entry) => entry.tableId === selectedTable);
+      // Step 1: Reset orders state
       setOrders({});
-      orders.forEach(order=>{
-        const newItem = { itemName: order.itemName, quantity: order.quantity, price: order.price };
+  
+      // Step 2: Fetch all current orders
+      const currentOrders = await fetchOrders();
+  
+      // Step 3: Find the orders for the selected table
+      const tableOrders = currentOrders.find((entry) => entry.tableId === selectedTable);
+  
+      // Step 4: Check if orders exist for the selected table
+      if (tableOrders && tableOrders.orders) {
+        const formattedOrders = tableOrders.orders.map(order => ({
+          itemName: order.itemName,
+          quantity: order.quantity,
+          price: order.price,
+        }));
+  
+        // Step 5: Update the state with the new orders
         setOrders((prev) => ({
           ...prev,
-          [selectedTable]: prev[selectedTable]  // Fetch existing orders for the selected table
-            ? [...prev[selectedTable], newItem]  // Add the new item to the existing orders
-            : [newItem],  // If no orders exist, add the new item as the first order
+          [selectedTable]: formattedOrders,
         }));
-      })
+      } else {
+        console.warn(`No orders found for table ID: ${selectedTable}`);
+      }
     } catch (error) {
-      console.error('Error adding new item:', error);
+      console.error('Error fetching orders:', error);
     }
   };
+
+  useEffect(() => {
+    if (selectedTable) {
+      fetchDataOrder();
+    }
+  }, [selectedTable]);
+  
+  
 
 
   
   //fetch Bills===============================================================
   const fetchDataBills = async () => {
-    const data = await fetchBills();  // Wait for the async function to resolve
- 
-    data.forEach(order=>{
-      const total = order.orders.reduce(
-        (sum, item) => sum + item.quantity * item.price,
-        0
-      );
+    try {
+      // Fetch the bills data
+      const data = await fetchBills();
+  
+      // Process each order to compute the bill
+      const updatedBills = {};
+      data.forEach((order) => {
+        const total = order.orders.reduce(
+          (sum, item) => sum + item.quantity * item.price,
+          0
+        );
+  
+        updatedBills[order.tableId] = {
+          table: order.tableId,
+          items: order.orders,
+          total,
+        };
+      });
+  
+      // Update the state with all bills at once
       setBill((prev) => ({
-            ...prev,
-            [order.tableId]: { table:order.tableId, items: order.orders, total },
-          }));
-    })
-    
+        ...prev,
+        ...updatedBills,
+      }));
+    } catch (error) {
+      console.error("Error fetching bills:", error);
+    }
   };
+  
 
 
   const TableData = async (table) => {
@@ -83,7 +122,6 @@ export const App = () => {
       return;
     }
     setSelectedTable(table);
-    await refreshData();
   };
 
   const RoleData = async (role) => {
