@@ -121,10 +121,6 @@ export const App = () => {
     setSelectedTable(table);
   };
 
-  const RoleData = async (role) => {
-    setRole(role);
-    console.log("reached")
-  };
 
   
 
@@ -300,7 +296,7 @@ const handlePayment = async (table) => {
       {/* Role Selection */}
       <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
         <button
-          onClick={() => RoleData("Take Order")}
+          onClick={() => setRole("Take Order")}
           style={{
             padding: "15px",
             backgroundColor: role === "Take Order" ? "#735454" : "#ccc",
@@ -316,7 +312,7 @@ const handlePayment = async (table) => {
           Take Order
         </button>
         <button
-          onClick={() => RoleData("Show Orders")}
+          onClick={() => setRole("Show Orders")}
           style={{
             padding: "15px",
             backgroundColor: role === "Show Orders" ? "#735454" : "#ccc",
