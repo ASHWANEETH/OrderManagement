@@ -264,8 +264,8 @@ const handlePayment = async (table) => {
           onClick={() => RoleData("Take Order")}
           style={{
             padding: "15px",
-            backgroundColor: role === "Take Order" ? "#027065" : "#ccc",
-            color: role === "Take Order" ? "black" : "white",
+            backgroundColor: role === "Take Order" ? "#4d2f2f" : "#ccc",
+            color: "white",
             margin: "5px",
             borderRadius: "5px",
             border: "none",
@@ -280,8 +280,8 @@ const handlePayment = async (table) => {
           onClick={() => RoleData("Show Orders")}
           style={{
             padding: "15px",
-            backgroundColor: role === "Show Orders" ? "#027065" : "#ccc",
-            color: role === "Show Orders" ? "black" : "white",
+            backgroundColor: role === "Show Orders" ? "#4d2f2f" : "#ccc",
+            color: "white",
             margin: "5px",
             borderRadius: "5px",
             border: "none",
