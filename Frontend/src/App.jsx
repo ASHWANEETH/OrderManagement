@@ -80,9 +80,6 @@ export const App = () => {
   }, [selectedTable]);
   
   
-
-
-  
   //fetch Bills===============================================================
   const fetchDataBills = async () => {
     try {
@@ -126,6 +123,7 @@ export const App = () => {
 
   const RoleData = async (role) => {
     setRole(role);
+    console.log("reached")
   };
 
   
