@@ -122,8 +122,6 @@ export const App = () => {
   };
 
 
-  
-
   const refreshData = async () => {
     setLoading(true);
     try {
@@ -330,28 +328,33 @@ const handlePayment = async (table) => {
       </div>
 
       {/* Table Selection */}
-      <h3 style={{ textAlign: "center", color: "#512DA8", fontWeight: "bold" }}>Select Table</h3>
-      <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", marginBottom: "20px" }}>
-        {[1, 2, 3, 4, 5, 6].map((table) => (
-          <button
-            key={table}
-            onClick={() => TableData(table)}
-            style={{
-              padding: "15px",
-              margin: "5px",
-              width: "120px",
-              backgroundColor: selectedTable === table ? "#3F51B5" : "#607D8B",
-              color: "white",
-              border: "none",
-              borderRadius: "5px",
-              fontSize: "16px",
-              cursor: "pointer",
-            }}
-          >
-            Table {table}
-          </button>
-        ))}
-      </div>
+      {role && (
+        <div>
+        <h3 style={{ textAlign: "center", color: "#512DA8", fontWeight: "bold" }}>Select Table</h3>
+        <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", marginBottom: "20px" }}>
+          {[1, 2, 3, 4, 5, 6].map((table) => (
+            <button
+              key={table}
+              onClick={() => TableData(table)}
+              style={{
+                padding: "15px",
+                margin: "5px",
+                width: "120px",
+                backgroundColor: selectedTable === table ? "#3F51B5" : "#607D8B",
+                color: "white",
+                border: "none",
+                borderRadius: "5px",
+                fontSize: "16px",
+                cursor: "pointer",
+              }}
+            >
+              Table {table}
+            </button>
+          ))}
+        </div>
+        </div>
+      )}
+      
 
       {/* Take Order View */}
       {role === "Take Order" && selectedTable && (
