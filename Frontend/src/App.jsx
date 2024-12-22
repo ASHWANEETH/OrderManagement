@@ -8,7 +8,7 @@ import {fetchBills,postBills,RemBill} from "./components/bills";
 
 
 export const App = () => {
-  const [role, setRole] = useState(""); // waiter or chef
+  const [role, setRole] = useState(""); // Take Order or Show Orders
   const [selectedTable, setSelectedTable] = useState(); // Current table
   const [orders, setOrders] = useState({}); // {table: [items]}
   const [itemName, setItemName] = useState("");
@@ -213,7 +213,7 @@ const handlePayment = async (table) => {
     tableId: table,
   });
 
-  // Alert for waiter when payment is done
+  // Alert for Take Order when payment is done
   alert(`Payment done for Table ${table}.`);
 
   // Trigger data refresh for orders and bills after payment
@@ -255,17 +255,17 @@ const handlePayment = async (table) => {
         </>
       )}
 
-      <h1 style={{ textAlign: "center", color: "#3F51B5", fontWeight: "bold" }}>Oyeeee
+      <h1 style={{ textAlign: "center", color: "Black", fontWeight: "bold" }}>Order Management
       </h1>
 
       {/* Role Selection */}
       <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
         <button
-          onClick={() => RoleData("waiter")}
+          onClick={() => RoleData("Take Order")}
           style={{
             padding: "15px",
-            backgroundColor: role === "waiter" ? "#3F51B5" : "#ccc",
-            color: "white",
+            backgroundColor: role === "Take Order" ? "#027065" : "#ccc",
+            color: role === "Take Order" ? "black" : "white",
             margin: "5px",
             borderRadius: "5px",
             border: "none",
@@ -274,14 +274,14 @@ const handlePayment = async (table) => {
             cursor: "pointer",
           }}
         >
-          Waiter
+          Take Order
         </button>
         <button
-          onClick={() => RoleData("chef")}
+          onClick={() => RoleData("Show Orders")}
           style={{
             padding: "15px",
-            backgroundColor: role === "chef" ? "#512DA8" : "#ccc",
-            color: "white",
+            backgroundColor: role === "Show Orders" ? "#027065" : "#ccc",
+            color: role === "Show Orders" ? "black" : "white",
             margin: "5px",
             borderRadius: "5px",
             border: "none",
@@ -290,7 +290,7 @@ const handlePayment = async (table) => {
             cursor: "pointer",
           }}
         >
-          Chef
+          Show Orders
         </button>
       </div>
 
@@ -318,10 +318,10 @@ const handlePayment = async (table) => {
         ))}
       </div>
 
-      {/* Waiter View */}
-      {role === "waiter" && selectedTable && (
+      {/* Take Order View */}
+      {role === "Take Order" && selectedTable && (
         <div>
-          <h3 style={{ color: "#512DA8", fontWeight: "bold" }}>Taking Orders for Table {selectedTable}</h3>
+          <h3 style={{ color: "black", fontWeight: "bold" }}>Taking Orders for Table {selectedTable}</h3>
 
           {/* Input for Items */}
           <div style={{ display: "flex", marginBottom: "15px" }}>
@@ -364,7 +364,7 @@ const handlePayment = async (table) => {
                   onClick={() => addToOrder(item)}
                   style={{
                     backgroundColor: "#FFEB3B", // Light Yellow
-                    color: "#512DA8",
+                    color: "black",
                     border: "none",
                     padding: "5px 10px",
                     marginLeft: "10px",
@@ -409,7 +409,7 @@ const handlePayment = async (table) => {
                 onClick={createBill}
                 style={{
                   backgroundColor: "#FFB74D", // Light Orange
-                  color: "white",
+                  color: "black",
                   padding: "10px",
                   borderRadius: "5px",
                   cursor: "pointer",
@@ -448,7 +448,7 @@ const handlePayment = async (table) => {
             onClick={() => handlePayment(table)}
             style={{
               backgroundColor: "#FFEB3B", // Light Yellow
-              color: "#512DA8",
+              color: "black",
               padding: "15px",
               width: "100%",
               borderRadius: "5px",
@@ -464,8 +464,8 @@ const handlePayment = async (table) => {
         </div>
       )}
 
-      {/* Chef View */}
-      {role === "chef" && selectedTable && (
+      {/* Show Orders View */}
+      {role === "Show Orders" && selectedTable && (
         <div>
           <h3 style={{ color: "#512DA8", fontWeight: "bold" }}> Orders for Table {selectedTable}</h3>
           <ul>
