@@ -171,7 +171,7 @@ const addToOrder = async (menuItem) => {
     alert("Please enter valid details and select a table!");
     return;
   }
-
+  setLoading(true);
   const notificationMessage = `Added ${menuItem.item} (Qty: ${quantity}) to table ${selectedTable}.`;
   // Post notification to backend-----------------------------
   await postNotification(notificationMessage);
@@ -193,12 +193,13 @@ const addToOrder = async (menuItem) => {
 
   // Trigger data refresh for orders and bills
   refreshData();
-
+  setLoading(false);
 
 };
 
 // Remove item from order
 const removeItem = async (index) => {
+  setLoading(true);
   const { itemName, quantity } = orders[selectedTable][index];
 
   const remItem = {
@@ -215,6 +216,7 @@ const removeItem = async (index) => {
   const notificationMessage = `Removed item from table ${selectedTable}.`;
   // Post notification to backend-------------------------------------
   postNotification(notificationMessage);
+  setLoading(false);
 };
 
 // Create bill and generate total
