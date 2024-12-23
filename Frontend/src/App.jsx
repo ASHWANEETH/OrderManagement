@@ -100,12 +100,14 @@ export const App = () => {
 
 
   useEffect(() => {
-  const interval = setInterval(() => {
-    ShowDataOrder(); // Fetch updated orders every 5 seconds
-  }, 1000);
+  if (role === "Show Orders") {
+    const interval = setInterval(() => {
+      ShowDataOrder(); // Fetch updated orders every 1 second
+    }, 1000);
 
-  return () => clearInterval(interval); // Cleanup interval on unmount
-}, []);
+    return () => clearInterval(interval); // Cleanup interval on unmount
+  }
+  }); // Depend on `role`
 
   
 
