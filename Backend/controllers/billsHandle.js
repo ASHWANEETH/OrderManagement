@@ -25,7 +25,11 @@ async function handlePutBill(req, res) {
         upsert: true // Create a new document if the table doesn't exist
       }
     );
-    await TableOrder.findOneAndDelete({ tableId: tableId });
+    await TableOrder.findOneAndUpdate(
+      { tableId: tableId },
+      { $set: { orders: [] } },
+      { new: true } // Return the updated document
+    );
     res.status(201).end();
   } catch (err) {
     // console.error(err); // Log error to the console for debugging
