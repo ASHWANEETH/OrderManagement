@@ -49,11 +49,6 @@ async function handleRemItem(req, res) {
     if (!updatedOrder) {
       return res.status(404).send("Table not found.");
     }
-
-    if (updatedOrder.orders.length === 0) {
-      await TableOrder.deleteOne({ tableId: tableId }); // Delete the table if no orders are left
-      return res.status(200).send(`Table ${tableId} deleted as no orders remain.`);
-    }
     // Respond with the updated order
     res.status(200).json(updatedOrder.orders);
   } catch (err) {
