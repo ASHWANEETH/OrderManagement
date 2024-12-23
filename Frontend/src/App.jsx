@@ -11,6 +11,7 @@ export const App = () => {
   const [role, setRole] = useState(""); // Take Order or Show Orders
   const [selectedTable, setSelectedTable] = useState(); // Current table
   const [orders, setOrders] = useState({}); // {table: [items]}
+  // const [ordersShow, setOrdersShow] = useState({}); // {table: [items]}
   const [itemName, setItemName] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [suggestions, setSuggestions] = useState([]); // Suggestions list
@@ -40,14 +41,32 @@ export const App = () => {
   
 
 
+
+  // const ShowDataOrder = async () => {
+  //   try {
+  //     // Step 1: Reset orders state
+  //     setOrdersShow({});
+  
+  //     // Step 2: Fetch all current orders
+  //     const currentOrders = await fetchOrders();
+  
+  //    console.log(currentOrders)
+    
+  //   } catch (error) {
+  //     console.error('Error fetching orders:', error);
+  //   }
+  // };
+
+
   //fetch Orders===================================================================
   const fetchDataOrder = async () => {
     try {
       // Step 1: Reset orders state
-      setOrders({});
+      // setOrders({});
   
       // Step 2: Fetch all current orders
       const currentOrders = await fetchOrders();
+      console.log(currentOrders);
   
       // Step 3: Find the orders for the selected table
       const tableOrders = currentOrders.find((entry) => entry.tableId === selectedTable);
