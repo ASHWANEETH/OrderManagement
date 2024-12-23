@@ -99,6 +99,14 @@ export const App = () => {
   };
 
 
+  useEffect(() => {
+  const interval = setInterval(() => {
+    ShowDataOrder(); // Fetch updated orders every 5 seconds
+  }, 1000);
+
+  return () => clearInterval(interval); // Cleanup interval on unmount
+}, []);
+
   
 
   useEffect(() => {
@@ -107,11 +115,6 @@ export const App = () => {
     }
   }, [selectedTable]);
 
-  useEffect(() => {
-    ShowDataOrder();
-   
-  }, [orders]);
-  
   
   //fetch Bills===============================================================
   const fetchDataBills = async () => {
@@ -222,7 +225,6 @@ const addToOrder = async (menuItem) => {
 
   // Trigger data refresh for orders and bills
   refreshData();
-  ShowDataOrder();
   setLoading(false);
 
 };
@@ -244,7 +246,6 @@ const removeItem = async (index) => {
   await postNotification(notificationMessage);
   // Trigger data refresh for orders and bills
   refreshData();
-  ShowDataOrder();
   setLoading(false);
 };
 
@@ -272,7 +273,6 @@ const createBill = async () => {
   setOrders({});
   // Trigger data refresh for orders and bills
   refreshData();
-  ShowDataOrder();
 
 
 };
