@@ -11,7 +11,7 @@ export const App = () => {
   const [role, setRole] = useState(""); // Take Order or Show Orders
   const [selectedTable, setSelectedTable] = useState(); // Current table
   const [orders, setOrders] = useState({}); // {table: [items]}
-  // const [ordersShow, setOrdersShow] = useState({}); // {table: [items]}
+  const [ordersShow, setOrdersShow] = useState({}); // {table: [items]}
   const [itemName, setItemName] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [suggestions, setSuggestions] = useState([]); // Suggestions list
@@ -42,20 +42,25 @@ export const App = () => {
 
 
 
-  // const ShowDataOrder = async () => {
-  //   try {
-  //     // Step 1: Reset orders state
-  //     setOrdersShow({});
+  const ShowDataOrder = async () => {
+    try {
+      // Step 2: Fetch all current orders
+      const currentOrders = await fetchOrders();
   
-  //     // Step 2: Fetch all current orders
-  //     const currentOrders = await fetchOrders();
+      // Transform the currentOrders array into an object grouped by tableId
+      const groupedOrders = currentOrders.reduce((acc, table) => {
+        acc[table.tableId] = table.orders;
+        return acc;
+      }, {});
   
-  //    console.log(currentOrders)
-    
-  //   } catch (error) {
-  //     console.error('Error fetching orders:', error);
-  //   }
-  // };
+      console.log("Grouped Orders:", groupedOrders);
+  
+      // Update the state with grouped orders
+      setOrdersShow(groupedOrders);
+    } catch (error) {
+      console.error("Error fetching orders:", error);
+    }
+  };
 
 
   //fetch Orders===================================================================
@@ -101,6 +106,11 @@ export const App = () => {
       fetchDataOrder();
     }
   }, [selectedTable]);
+
+  useEffect(() => {
+    ShowDataOrder();
+   
+  }, [orders]);
   
   
   //fetch Bills===============================================================
@@ -212,6 +222,7 @@ const addToOrder = async (menuItem) => {
 
   // Trigger data refresh for orders and bills
   refreshData();
+  ShowDataOrder();
   setLoading(false);
 
 };
@@ -233,6 +244,7 @@ const removeItem = async (index) => {
   await postNotification(notificationMessage);
   // Trigger data refresh for orders and bills
   refreshData();
+  ShowDataOrder();
   setLoading(false);
 };
 
@@ -260,6 +272,7 @@ const createBill = async () => {
   setOrders({});
   // Trigger data refresh for orders and bills
   refreshData();
+  ShowDataOrder();
 
 
 };
@@ -526,27 +539,27 @@ const handlePayment = async (table) => {
       )}
 
       {/* Show Orders View */}
-    {role === "Show Orders" && (
-  <div>
-    <h3 style={{ color: "#512DA8", fontWeight: "bold" }}>All Orders</h3>
-    {Object.keys(orders).length > 0 ? (
-      Object.entries(orders).map(([tableId, tableOrders]) => (
-        <div key={tableId} style={{ marginBottom: "20px" }}>
-          <h4 style={{ fontWeight: "bold" }}>Table {tableId}</h4>
-          <ul>
-            {tableOrders.map((item, index) => (
-              <li key={index} style={{ fontWeight: "bold" }}>
-                {item.quantity} x {item.itemName}
-              </li>
-            ))}
-          </ul>
+      {role === "Show Orders" && (
+        <div>
+          <h3 style={{ color: "#512DA8", fontWeight: "bold" }}>All Orders</h3>
+          {Object.keys(ordersShow).length > 0 ? (
+            Object.entries(ordersShow).map(([tableId, tableOrders]) => (
+              <div key={tableId} style={{ marginBottom: "20px" }}>
+                <h4 style={{ fontWeight: "bold" }}>Table {tableId}</h4>
+                <ul>
+                  {tableOrders.map((item, index) => (
+                    <li key={index} style={{ fontWeight: "bold" }}>
+                      {item.quantity} x {item.itemName}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          ) : (
+            <p style={{ fontStyle: "italic", color: "#999" }}>No orders available.</p>
+          )}
         </div>
-      ))
-    ) : (
-      <p style={{ fontStyle: "italic", color: "#999" }}>No orders available.</p>
-    )}
-  </div>
-)}
+      )}
      
     </div>  
   ); 
