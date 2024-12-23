@@ -107,7 +107,7 @@ export const App = () => {
 
     return () => clearInterval(interval); // Cleanup interval on unmount
   }
-  }); // Depend on `role`
+  },[role]); // Depend on `role`
 
   
 
