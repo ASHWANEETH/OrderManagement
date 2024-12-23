@@ -542,25 +542,60 @@ const handlePayment = async (table) => {
 
       {/* Show Orders View */}
       {role === "Show Orders" && (
-        <div>
-          <h3 style={{ color: "#512DA8", fontWeight: "bold" }}>All Orders</h3>
-          {Object.keys(ordersShow).length > 0 ? (
-            Object.entries(ordersShow).map(([tableId, tableOrders]) => (
-              <div key={tableId} style={{ marginBottom: "20px" }}>
-                <h4 style={{ fontWeight: "bold" }}>Table {tableId}</h4>
-                <ul>
-                  {tableOrders.map((item, index) => (
-                    <li key={index} style={{ listStyleType: "none" }}>
-                      {item.quantity} x {item.itemName}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))
-          ) : (
-            <p style={{ fontStyle: "italic", color: "#999" }}>No orders available.</p>
-          )}
-        </div>
+        <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+  <h3 style={{ color: "#673AB7", fontWeight: "bold", marginBottom: "20px" }}>All Orders</h3>
+  {Object.keys(ordersShow).length > 0 ? (
+    Object.entries(ordersShow).map(([tableId, tableOrders]) => (
+      <div
+        key={tableId}
+        style={{
+          marginBottom: "20px",
+          border: "1px solid #E0E0E0",
+          borderRadius: "8px",
+          padding: "15px",
+          backgroundColor: "#F9F9F9",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        <h4
+          style={{
+            fontWeight: "bold",
+            color: "#512DA8",
+            marginBottom: "10px",
+          }}
+        >
+          Table {tableId}
+        </h4>
+        <ul style={{ paddingLeft: "20px", margin: 0 }}>
+          {tableOrders.map((item, index) => (
+            <li
+              key={index}
+              style={{
+                listStyleType: "disc",
+                color: "#333",
+                fontSize: "16px",
+                marginBottom: "5px",
+              }}
+            >
+              <strong>{item.quantity}</strong> x {item.itemName}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))
+  ) : (
+    <p
+      style={{
+        fontStyle: "italic",
+        color: "#999",
+        textAlign: "center",
+        marginTop: "20px",
+      }}
+    >
+      No orders available.
+    </p>
+  )}
+</div>
       )}
      
     </div>  
