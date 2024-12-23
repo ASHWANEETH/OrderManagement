@@ -550,7 +550,7 @@ const handlePayment = async (table) => {
                 <h4 style={{ fontWeight: "bold" }}>Table {tableId}</h4>
                 <ul>
                   {tableOrders.map((item, index) => (
-                    <li key={index} style={{ fontWeight: "bold" }}>
+                    <li key={index} style={{ listStyleType: "none" }}>
                       {item.quantity} x {item.itemName}
                     </li>
                   ))}
