@@ -209,13 +209,11 @@ const removeItem = async (index) => {
   };
 
   await RemItem(remItem);
-  
-    // Trigger data refresh for orders and bills
-    refreshData();
-
   const notificationMessage = `Removed item from table ${selectedTable}.`;
   // Post notification to backend-------------------------------------
-  postNotification(notificationMessage);
+  await postNotification(notificationMessage);
+  // Trigger data refresh for orders and bills
+  refreshData();
   setLoading(false);
 };
 
