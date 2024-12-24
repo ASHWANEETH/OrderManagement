@@ -368,20 +368,21 @@ const handlePayment = async (table) => {
       {/* Table Selection */}
       {role == "Take Order" && (
         <div>
-        <h3 style={{ textAlign: "center", color: "#512DA8", fontWeight: "bold" }}>Select Table</h3>
+        <h3 style={{ textAlign: "center", color: "black", fontWeight: "bold" }}>Select Table</h3>
         <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", marginBottom: "20px" }}>
           {[1, 2, 3, 4, 5, 6].map((table) => (
             <button
               key={table}
-              onClick={() => TableData(table)}
+              // onClick={() => TableData(table)}
               style={{
-                padding: "15px",
+                padding: "5px",
                 margin: "5px",
                 width: "120px",
-                backgroundColor: selectedTable === table ? "#3F51B5" : "#607D8B",
-                color: "white",
+                backgroundColor:  selectedTable === table ? "#ff9966" : "#ffcc99",
+                color: selectedTable === table ? "black" : "white",
                 border: "none",
                 borderRadius: "5px",
+                fontWeight:selectedTable === table ? "bold" : "",
                 fontSize: "16px",
                 cursor: "pointer",
               }}
