@@ -548,23 +548,19 @@ const handlePayment = async (table) => {
           Object.entries(ordersShow).map(([tableId, tableOrders]) => (
             <div
               key={tableId}
-              style={{
-                marginBottom: "20px",
-                padding: "1px",
-                backgroundColor: "#F9F9F9",
-              }}
             >
               <h4
                 style={{
                   fontWeight: "bold",
                   color: "black",
-                  marginBottom: "10px",
+                  marginBottom: "5px",
                 }}
               >
                 Table {tableId}
               </h4>
               {tableOrders && tableOrders.length > 0 ? (
-                
+                <>
+               
                 <ul style={{ paddingLeft: "20px", margin: 0 }}>
                   {tableOrders.map((item, index) => (
                     <li
@@ -586,7 +582,7 @@ const handlePayment = async (table) => {
                           borderRadius: "8px",
                           padding: "5px 10px",
                           backgroundColor: "black",
-                          boxShadow: "0 14px 18px rgba(0, 0, 0, 0.3)",
+                          boxShadow: "0 12px 14px rgba(0, 0, 0, 0.3)",
                         }}
                       >
                         {item.itemName} <strong style={{ color: "yellow" }}>x {item.quantity}</strong>
@@ -594,6 +590,8 @@ const handlePayment = async (table) => {
                     </li>
                   ))}
                 </ul>
+                <br />
+                </>
               ) : (
                 <p
                   style={{
