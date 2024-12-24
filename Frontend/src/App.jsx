@@ -474,7 +474,7 @@ const handlePayment = async (table) => {
                         style={{
                           fontStyle: "italic",
                           color: "black",
-                          fontSize: "14px",
+                          fontSize: "16px",
                           fontWeight: "bold",
                           listStyle: "none",
                           borderRadius: "8px",
