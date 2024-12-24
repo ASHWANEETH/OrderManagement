@@ -554,7 +554,10 @@ const handlePayment = async (table) => {
                 backgroundColor: "#F9F9F9",
               }}
             >
-              <h4
+              
+              {tableOrders && tableOrders.length > 0 ? (
+                <>
+                <h4
                 style={{
                   fontWeight: "bold",
                   color: "black",
@@ -563,7 +566,6 @@ const handlePayment = async (table) => {
               >
                 Table {tableId}
               </h4>
-              {tableOrders && tableOrders.length > 0 ? (
                 <ul style={{ paddingLeft: "20px", margin: 0 }}>
                   {tableOrders.map((item, index) => (
                     <li
@@ -592,7 +594,7 @@ const handlePayment = async (table) => {
                       </span>
                     </li>
                   ))}
-                </ul>
+                </ul></>
               ) : (
                 <p
                   style={{
@@ -608,16 +610,7 @@ const handlePayment = async (table) => {
             </div>
           ))
         ) : (
-          <p
-            style={{
-              fontStyle: "italic",
-              color: "#999",
-              textAlign: "center",
-              marginTop: "20px",
-            }}
-          >
-            No orders available.
-          </p>
+         {}
         )}
       </div>
       )}
