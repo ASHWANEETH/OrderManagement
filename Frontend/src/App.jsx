@@ -373,7 +373,7 @@ const handlePayment = async (table) => {
           {[1, 2, 3, 4, 5, 6].map((table) => (
             <button
               key={table}
-              // onClick={() => TableData(table)}
+              onClick={() => TableData(table)}
               style={{
                 padding: "5px",
                 margin: "5px",
