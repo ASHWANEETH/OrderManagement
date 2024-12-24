@@ -32,29 +32,38 @@ async function handleAddItem(req, res) {
 
 async function handleRemItem(req, res) {
   try {
-    const { tableId,itemName,quantity } = req.body; // Assuming itemName is provided to identify the item to remove
-
-    // Use findOneAndUpdate to find the table by tableId and remove the item from orders array
-    const updatedOrder = await TableOrder.findOneAndUpdate(
-      { tableId: tableId }, // Search condition to find the table by tableId
-      { 
-        $pull: { orders: { itemName: itemName,quantity:quantity } } // Remove the item with the specified itemName
-      },
-      { 
-        new: true, // Return the updated document
-        upsert: false // Don't create a new document if not found
-      }
-    );
-    // If the table with the given tableId is not found
-    if (!updatedOrder) {
+    const { tableId, itemName, quantity } = req.body; // Assuming itemName and quantity are provided to identify the item to remove
+  
+    // Find the table by tableId
+    const table = await TableOrder.findOne({ tableId: tableId });
+    
+    if (!table) {
       return res.status(404).send("Table not found.");
     }
+  
+    // Locate the index of the first matching item
+    const itemIndex = table.orders.findIndex(
+      (order) => order.itemName === itemName && order.quantity === quantity
+    );
+  
+    // If the item is not found
+    if (itemIndex === -1) {
+      return res.status(404).send("Item not found in orders.");
+    }
+  
+    // Remove the first occurrence of the matching item
+    table.orders.splice(itemIndex, 1);
+  
+    // Save the updated document
+    await table.save();
+  
     // Respond with the updated order
-    res.status(200).json(updatedOrder.orders);
+    res.status(200).json(table.orders);
   } catch (err) {
     console.error(err); // Log error to the console for debugging
     res.status(500).send("Error removing item from table order.");
   }
+  
 }
 
 module.exports={
