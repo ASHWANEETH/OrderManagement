@@ -89,6 +89,8 @@ export const App = () => {
           ...prev,
           [selectedTable]: formattedOrders,
         }));
+
+        console.log(formattedOrders);
         
       } else {
         console.warn(`No orders found for table ID: ${selectedTable}`);
