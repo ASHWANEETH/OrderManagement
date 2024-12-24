@@ -543,59 +543,82 @@ const handlePayment = async (table) => {
       {/* Show Orders View */}
       {role === "Show Orders" && (
         <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-  <h3 style={{ color: "#673AB7", fontWeight: "bold", marginBottom: "20px" }}>All Orders</h3>
-  {Object.keys(ordersShow).length > 0 ? (
-    Object.entries(ordersShow).map(([tableId, tableOrders]) => (
-      <div
-        key={tableId}
-        style={{
-          marginBottom: "20px",
-          border: "1px solid #E0E0E0",
-          borderRadius: "8px",
-          padding: "15px",
-          backgroundColor: "#F9F9F9",
-          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-        }}
-      >
-        <h4
-          style={{
-            fontWeight: "bold",
-            color: "#512DA8",
-            marginBottom: "10px",
-          }}
-        >
-          Table {tableId}
-        </h4>
-        <ul style={{ paddingLeft: "20px", margin: 0 }}>
-          {tableOrders.map((item, index) => (
-            <li
-              key={index}
+        <h3 style={{ color: "black", fontWeight: "bold", marginBottom: "20px" }}>All Orders :</h3>
+        {Object.keys(ordersShow).length > 0 ? (
+          Object.entries(ordersShow).map(([tableId, tableOrders]) => (
+            <div
+              key={tableId}
               style={{
-                listStyleType: "disc",
-                color: "#333",
-                fontSize: "16px",
-                marginBottom: "5px",
+                marginBottom: "20px",
+                padding: "10px",
+                backgroundColor: "#F9F9F9",
               }}
             >
-              <strong>{item.quantity}</strong> x {item.itemName}
-            </li>
-          ))}
-        </ul>
+              <h4
+                style={{
+                  fontWeight: "bold",
+                  color: "black",
+                  marginBottom: "10px",
+                }}
+              >
+                Table {tableId}
+              </h4>
+              {tableOrders && tableOrders.length > 0 ? (
+                <ul style={{ paddingLeft: "20px", margin: 0 }}>
+                  {tableOrders.map((item, index) => (
+                    <li
+                      key={index}
+                      style={{
+                        marginBottom: "5px",
+                        padding: "5px",
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontStyle: "italic",
+                          color: "white",
+                          fontSize: "14px",
+                          marginBottom: "5px",
+                          listStyle: "none",
+                          border: "1px solid grey",
+                          borderRadius: "8px",
+                          padding: "5px 10px",
+                          backgroundColor: "black",
+                          boxShadow: "0 14px 18px rgba(0, 0, 0, 0.3)",
+                        }}
+                      >
+                        {item.itemName} <strong style={{ color: "yellow" }}>x {item.quantity}</strong>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p
+                  style={{
+                    fontStyle: "italic",
+                    color: "#999",
+                    paddingLeft:"15px",
+                    marginTop: "20px",
+                  }}
+                >
+                  No orders available.
+                </p>
+              )}
+            </div>
+          ))
+        ) : (
+          <p
+            style={{
+              fontStyle: "italic",
+              color: "#999",
+              textAlign: "center",
+              marginTop: "20px",
+            }}
+          >
+            No orders available.
+          </p>
+        )}
       </div>
-    ))
-  ) : (
-    <p
-      style={{
-        fontStyle: "italic",
-        color: "#999",
-        textAlign: "center",
-        marginTop: "20px",
-      }}
-    >
-      No orders available.
-    </p>
-  )}
-</div>
       )}
      
     </div>  
