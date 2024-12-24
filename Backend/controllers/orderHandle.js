@@ -58,7 +58,7 @@ async function handleRemItem(req, res) {
     await table.save();
   
     // Respond with the updated order
-    res.status(200).json(table.orders);
+    res.status(200);
   } catch (err) {
     console.error(err); // Log error to the console for debugging
     res.status(500).send("Error removing item from table order.");
