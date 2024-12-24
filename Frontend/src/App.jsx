@@ -571,6 +571,7 @@ const handlePayment = async (table) => {
                       style={{
                         marginBottom: "5px",
                         padding: "5px",
+                        listStyle: "none",
                       }}
                     >
                       <span
