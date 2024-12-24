@@ -24,13 +24,14 @@ async function handlePutBill(req, res) {
 
     const now = new Date();
 
-    // Format date like "2 Sep 2023"
-    const optionsDate = { day: "numeric", month: "short", year: "numeric" };
-    const formattedDate = now.toLocaleDateString("en-US", optionsDate);
+    // Format the date as "2 Sep 2023"
+    const optionsDate = { day: "numeric", month: "short", year: "numeric", timeZone: "Asia/Kolkata" };
+    const formattedDate = new Intl.DateTimeFormat("en-IN", optionsDate).format(now);
 
-    // Format time like "10:00 PM"
-    const optionsTime = { hour: "2-digit", minute: "2-digit", hour12: true };
-    const formattedTime = now.toLocaleTimeString("en-US", optionsTime);
+    // Format the time as "10:00 PM"
+    const optionsTime = { hour: "2-digit", minute: "2-digit", hour12: true, timeZone: "Asia/Kolkata" };
+    const formattedTime = new Intl.DateTimeFormat("en-IN", optionsTime).format(now);
+
     const { tableId, orders, totalPrice } = req.body;
 
     // Update or create a bill in the database
@@ -56,23 +57,17 @@ async function handlePutBill(req, res) {
     );
 
     // Construct the Telegram message
-    let message = `🧾 *Order Summary*\n`;
+    let message = `🧾 *New Bill at Table ${tableId}*\n\n`;
     message += `📅 Date: ${formattedDate}\n⏰ Time: ${formattedTime}\n\n`;
-    message += `🍽️ *Table ${tableId}*\n\n`;
+    message += `🧾 *Order Summary*\n\n`;
 
-    // Use `+` for corners and `-` for horizontal lines, `|` for table columns
-    message += `+------------------------+--------+----------+--------+\n`;
-    message += `| *Item Name*            | *Price*| *Quantity*| *Total*|\n`;
-    message += `+------------------------+--------+----------+--------+\n`;
-
+    // Loop through orders and create message
     orders.forEach((order) => {
       const itemTotal = order.quantity * order.price;
-      message += `| ${order.itemName.padEnd(22)} | ₹${order.price.toFixed(2).padStart(6)} | ${order.quantity.toString().padStart(8)} | ₹${itemTotal.toFixed(2).padStart(6)} |\n`;
+      message += `${order.itemName} --> ( ${order.quantity} x ₹${order.price.toFixed(2)} = ₹${itemTotal.toFixed(2)})\n`;
     });
 
-    message += `+------------------------+--------+----------+--------+\n`;
-    message += `| **Total**              |        |          | ₹${totalPrice.toFixed(2).padStart(6)} |\n`;
-    message += `+------------------------+--------+----------+--------+\n`;
+    message += `\n💰 Total Bill = ₹${totalPrice.toFixed(2)}\n`;
 
     // Send the message via Telegram
     await bot.sendMessage(chatId, message, { parse_mode: "Markdown" });
