@@ -21,6 +21,16 @@ async function handleGetBill(req,res) {
 
 async function handlePutBill(req, res) {
   try {
+
+    const now = new Date();
+
+    // Format date like "2 Sep 2023"
+    const optionsDate = { day: "numeric", month: "short", year: "numeric" };
+    const formattedDate = now.toLocaleDateString("en-US", optionsDate);
+
+    // Format time like "10:00 PM"
+    const optionsTime = { hour: "2-digit", minute: "2-digit", hour12: true };
+    const formattedTime = now.toLocaleTimeString("en-US", optionsTime);
     const { tableId, orders, totalPrice } = req.body;
 
     // Update or create a bill in the database
@@ -46,16 +56,27 @@ async function handlePutBill(req, res) {
     );
 
     // Construct the Telegram message
-    let message = ` New Bill from Table ${tableId}:\n`;
+    let message = `🧾 *Order Summary*\n`;
+    message += `📅 Date: ${formattedDate}\n⏰ Time: ${formattedTime}\n\n`;
+    message += `🍽️ *Table ${tableId}*\n\n`;
+
+    // Use `+` for corners and `-` for horizontal lines, `|` for table columns
+    message += `+------------------------+--------+----------+--------+\n`;
+    message += `| *Item Name*            | *Price*| *Quantity*| *Total*|\n`;
+    message += `+------------------------+--------+----------+--------+\n`;
+
     orders.forEach((order) => {
-      message += `- ${order.itemName}: ${order.quantity} x ${order.price} = ${
-        order.quantity * order.price
-      }\n`;
+      const itemTotal = order.quantity * order.price;
+      message += `| ${order.itemName.padEnd(22)} | ₹${order.price.toFixed(2).padStart(6)} | ${order.quantity.toString().padStart(8)} | ₹${itemTotal.toFixed(2).padStart(6)} |\n`;
     });
-    message += `\n Total Price: ${totalPrice}`;
+
+    message += `+------------------------+--------+----------+--------+\n`;
+    message += `| **Total**              |        |          | ₹${totalPrice.toFixed(2).padStart(6)} |\n`;
+    message += `+------------------------+--------+----------+--------+\n`;
 
     // Send the message via Telegram
-    await bot.sendMessage(chatId, message);
+    await bot.sendMessage(chatId, message, { parse_mode: "Markdown" });
+
 
     // Respond with success
     res.status(201).end();
