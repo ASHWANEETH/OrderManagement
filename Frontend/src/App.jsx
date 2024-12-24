@@ -505,6 +505,7 @@ const handlePayment = async (table) => {
                   </li>
                 ))}
               </ul>
+              <center>
               <button
                 onClick={createBill}
                 style={{
@@ -513,14 +514,14 @@ const handlePayment = async (table) => {
                   padding: "10px",
                   borderRadius: "5px",
                   cursor: "pointer",
-                  width: "80%",
+                  width: "85%",
                   fontSize: "16px",
                   marginTop: "10px",
                   fontWeight: "bold",
                 }}
               >
                 Create Bill
-              </button>
+              </button></center>
             </div>
           )}
            {/* Bill View */}
