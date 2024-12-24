@@ -335,7 +335,7 @@ const handlePayment = async (table) => {
           onClick={() => setRole("Take Order")}
           style={{
             padding: "15px",
-            backgroundColor: role === "Take Order" ? "#735454" : "#ccc",
+            backgroundColor: role === "Take Order" ? "#993300" : "#ccc",
             color: "white",
             margin: "5px",
             borderRadius: "5px",
@@ -343,6 +343,7 @@ const handlePayment = async (table) => {
             width: "100px",
             fontSize: "16px",
             cursor: "pointer",
+            fontWeight:role === "Take Order"? "bold" :""
           }}
         >
           Take Order
@@ -351,7 +352,7 @@ const handlePayment = async (table) => {
           onClick={() => setRole("Show Orders")}
           style={{
             padding: "15px",
-            backgroundColor: role === "Show Orders" ? "#735454" : "#ccc",
+            backgroundColor: role === "Show Orders" ? "#993300" : "#ccc",
             color: "white",
             margin: "5px",
             borderRadius: "5px",
@@ -359,6 +360,7 @@ const handlePayment = async (table) => {
             width: "100px",
             fontSize: "16px",
             cursor: "pointer",
+            fontWeight:role === "Show Orders"? "bold" :""
           }}
         >
           Show Orders
@@ -375,11 +377,11 @@ const handlePayment = async (table) => {
               key={table}
               onClick={() => TableData(table)}
               style={{
-                padding: "5px",
+                padding: "8px",
                 margin: "5px",
                 width: "120px",
-                backgroundColor:  selectedTable === table ? "#ff9966" : "#ffcc99",
-                color: selectedTable === table ? "black" : "white",
+                backgroundColor:  selectedTable === table ? "#993300" : "#ccc",
+                color: "white",
                 border: "none",
                 borderRadius: "5px",
                 fontWeight:selectedTable === table ? "bold" : "",
