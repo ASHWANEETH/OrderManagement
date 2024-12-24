@@ -53,7 +53,6 @@ export const App = () => {
         return acc;
       }, {});
   
-      console.log("Grouped Orders:", groupedOrders);
   
       // Update the state with grouped orders
       setOrdersShow(groupedOrders);
