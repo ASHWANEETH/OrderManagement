@@ -542,14 +542,14 @@ const handlePayment = async (table) => {
 
       {/* Show Orders View */}
       {role === "Show Orders" && (
-        <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-        <h3 style={{ color: "black", fontWeight: "bold", marginBottom: "20px" }}>All Orders:</h3>
+        <div style={{ padding: "10px", fontFamily: "Arial, sans-serif" }}>
+        <h3 style={{ color: "black", fontWeight: "bold", marginBottom: "5px" }}>All Orders:</h3>
         {Object.keys(ordersShow).length > 0 ? (
           Object.entries(ordersShow).map(([tableId, tableOrders]) => (
             <div
               key={tableId}
               style={{
-                padding: "3px 6px",
+                padding: "3px 6px 6px 6px",
                 backgroundColor: "#F9F9F9",
               }}
             >
@@ -565,7 +565,7 @@ const handlePayment = async (table) => {
               {tableOrders && tableOrders.length > 0 ? (
                 <>
                
-                <ul style={{ paddingLeft: "20px", margin: 0 }}>
+                <ul style={{ paddingLeft: "10px", margin: 0 }}>
                   {tableOrders.map((item, index) => (
                     <li
                       key={index}
@@ -580,7 +580,7 @@ const handlePayment = async (table) => {
                           fontStyle: "italic",
                           color: "white",
                           fontSize: "14px",
-                          // marginBottom: "5px",
+                          marginBottom: "5px",
                           listStyle: "none",
                           border: "1px solid grey",
                           borderRadius: "8px",
@@ -594,7 +594,7 @@ const handlePayment = async (table) => {
                     </li>
                   ))}
                 </ul>
-                <br />
+                {/* <hr /> */}
                 </>
               ) : (
                 <p
