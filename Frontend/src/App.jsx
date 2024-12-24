@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import menu from "./components/menu.json";
-import {fetchNotifications,postNotification} from "./components/Notifications";
+// import {fetchNotifications,postNotification} from "./components/Notifications";
 import {AddItem, fetchOrders,RemItem} from "./components/orders";
 import {fetchBills,postBills,RemBill} from "./components/bills";
 
@@ -16,28 +16,28 @@ export const App = () => {
   const [quantity, setQuantity] = useState(1);
   const [suggestions, setSuggestions] = useState([]); // Suggestions list
   const [bill, setBill] = useState({}); // Bill display for each table
-  const [notifications, setNotifications] = useState([" "]); // List of notifications
+  // const [notifications, setNotifications] = useState([" "]); // List of notifications
   const [loading, setLoading] = useState(false);
 
 
 
   //fetch Notification==============================================================
-  const fetchDataNoti = async () => {
-    try {
-      // Fetch new notifications
-      const data = await fetchNotifications();
+  // const fetchDataNoti = async () => {
+  //   try {
+  //     // Fetch new notifications
+  //     const data = await fetchNotifications();
   
-      // Update notifications with the new data
-      setNotifications((prev) => [...prev, data]);
+  //     // Update notifications with the new data
+  //     setNotifications((prev) => [...prev, data]);
   
-      // Reset notifications after 3 seconds
-      setTimeout(() => {
-        setNotifications((prev) => prev.length > 0 ? ["📌"] : prev); // Ensure no overwriting if notifications are added during the delay
-      }, 3000);
-    } catch (error) {
-      console.error("Error fetching notifications:", error);
-    }
-  };
+  //     // Reset notifications after 3 seconds
+  //     setTimeout(() => {
+  //       setNotifications((prev) => prev.length > 0 ? ["📌"] : prev); // Ensure no overwriting if notifications are added during the delay
+  //     }, 3000);
+  //   } catch (error) {
+  //     console.error("Error fetching notifications:", error);
+  //   }
+  // };
   
 
 
@@ -163,7 +163,7 @@ export const App = () => {
   const refreshData = async () => {
     setLoading(true);
     try {
-      await Promise.all([fetchDataNoti(), fetchDataOrder(), fetchDataBills()]);
+      await Promise.all([ fetchDataOrder(), fetchDataBills()]);
     } catch (error) {
       console.error("Error refreshing data:", error);
     } finally {
@@ -206,9 +206,9 @@ const addToOrder = async (menuItem) => {
     return;
   }
   setLoading(true);
-  const notificationMessage = `Added ${menuItem.item} (Qty: ${quantity}) to table ${selectedTable}.`;
-  // Post notification to backend-----------------------------
-  await postNotification(notificationMessage);
+  // const notificationMessage = `Added ${menuItem.item} (Qty: ${quantity}) to table ${selectedTable}.`;
+  // // Post notification to backend-----------------------------
+  // await postNotification(notificationMessage);
 
   const newItem = {
     "tableId": selectedTable,
@@ -243,9 +243,9 @@ const removeItem = async (index) => {
   };
 
   await RemItem(remItem);
-  const notificationMessage = `Removed item from table ${selectedTable}.`;
-  // Post notification to backend-------------------------------------
-  await postNotification(notificationMessage);
+  // const notificationMessage = `Removed item from table ${selectedTable}.`;
+  // // Post notification to backend-------------------------------------
+  // await postNotification(notificationMessage);
   // Trigger data refresh for orders and bills
   refreshData();
   setLoading(false);
@@ -302,7 +302,7 @@ const handlePayment = async (table) => {
     <div style={{ fontFamily: "Arial, sans-serif", padding: "20px", backgroundColor: "#f4f4f4" }}>
       {loading && <LoadingScreen />}
       {/* Notifications */}
-      {notifications.length > 0 && (
+      {/* {notifications.length > 0 && (
         <>
         <span
           style={{
@@ -324,7 +324,7 @@ const handlePayment = async (table) => {
         </span>
         <br />
         </>
-      )}
+      )} */}
 
       <h1 style={{ textAlign: "center", color: "Black", fontWeight: "bold" }}>Order Management
       </h1>
