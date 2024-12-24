@@ -619,7 +619,7 @@ const handlePayment = async (table) => {
               marginTop: "5px",
             }}
           >
-            No orders available.
+            Loading Orders...
           </p>
         )}
       </div>
