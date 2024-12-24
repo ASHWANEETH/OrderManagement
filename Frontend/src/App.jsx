@@ -552,6 +552,8 @@ const handlePayment = async (table) => {
                 marginBottom: "20px",
                 padding: "3px 10px",
                 backgroundColor: "#F9F9F9",
+                border: "1px solid grey",
+                borderRadius: "5px",
               }}
             >
               <h4
