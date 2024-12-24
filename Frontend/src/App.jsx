@@ -596,21 +596,21 @@ const handlePayment = async (table) => {
                   ))}
                 </ul></>
               ) : (
-                <p
-                  style={{
-                    fontStyle: "italic",
-                    color: "#999",
-                    paddingLeft:"15px",
-                    marginTop: "20px",
-                  }}
-                >
-                  No orders available.
-                </p>
+                {}
               )}
             </div>
           ))
         ) : (
-         {}
+          <p
+            style={{
+              fontStyle: "italic",
+              color: "#999",
+              textAlign: "center",
+              marginTop: "20px",
+            }}
+          >
+           
+          </p>
         )}
       </div>
       )}
