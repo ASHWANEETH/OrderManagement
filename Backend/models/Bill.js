@@ -5,7 +5,8 @@ const BillSchema = new mongoose.Schema({
   orders:[
     {itemName:String,
     quantity:Number,
-    price:Number,}
+    price:Number,
+    totalPrice:Number,}
 ],
   
   createdAt: { type: Date, default: Date.now },

@@ -267,7 +267,10 @@ const createBill = async () => {
       itemName: order.itemName,
       quantity: order.quantity,
       price: order.price,
-    })),
+      
+    }))
+    ,
+    totalPrice: tableOrder.reduce((sum, order) => sum + order.quantity * order.price, 0), // Calculate total price
   };
 
   await postBills(newBill);

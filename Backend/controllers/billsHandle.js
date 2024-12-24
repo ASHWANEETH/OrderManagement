@@ -21,28 +21,38 @@ async function handleGetBill(req,res) {
 
 async function handlePutBill(req, res) {
   try {
-    const { tableId, orders } = req.body;
+    const { tableId, orders, totalPrice } = req.body;
+
+    // Update or create a bill in the database
     const updatedOrder = await Bill.findOneAndUpdate(
-      { tableId: tableId }, 
-      { 
-        $set: { orders: orders  } // Add the new orders to the orders array
+      { tableId: tableId },
+      {
+        $set: {
+          orders: orders,
+          totalPrice: totalPrice, // Use totalPrice from req.body
+        },
       },
-      { 
-        new: true,  // Return the updated document
-        upsert: true // Create a new document if the table doesn't exist
+      {
+        new: true, // Return the updated document
+        upsert: true, // Create a new document if the table doesn't exist
       }
     );
+
+    // Clear the orders for the specified table
     await TableOrder.findOneAndUpdate(
       { tableId: tableId },
       { $set: { orders: [] } },
-      { new: true } // Return the updated document
+      { new: true }
     );
 
-      // Construct the message
-    let message = `New Order from Table ${tableId}:\n\n`;
+    // Construct the Telegram message
+    let message = ` New Bill from Table ${tableId}:\n`;
     orders.forEach((order) => {
-      message += `- ${order.itemName}: ${order.quantity}\n`;
+      message += `- ${order.itemName}: ${order.quantity} x ${order.price} = ${
+        order.quantity * order.price
+      }\n`;
     });
+    message += `\n Total Price: ${totalPrice}`;
 
     // Send the message via Telegram
     await bot.sendMessage(chatId, message);
@@ -50,10 +60,11 @@ async function handlePutBill(req, res) {
     // Respond with success
     res.status(201).end();
   } catch (err) {
-    // console.error(err); // Log error to the console for debugging
+    console.error(err); // Log error to the console for debugging
     res.status(500).send("Error creating bill.");
   }
 }
+
 
 async function handleRemBill(req,res) {
   const {tableId} = req.body;
