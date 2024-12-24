@@ -580,7 +580,7 @@ const handlePayment = async (table) => {
                           fontStyle: "italic",
                           color: "white",
                           fontSize: "14px",
-                          marginBottom: "5px",
+                          // marginBottom: "5px",
                           listStyle: "none",
                           border: "1px solid grey",
                           borderRadius: "8px",
