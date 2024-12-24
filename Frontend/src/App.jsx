@@ -300,7 +300,7 @@ const handlePayment = async (table) => {
 
   return (
   
-    <div style={{ fontFamily: "Arial, sans-serif", padding: "5px 10px", backgroundColor: "#f4f4f4" }}>
+    <div style={{ fontFamily: "Arial, sans-serif", padding: "2px 20px", backgroundColor: "#f4f4f4" }}>
       {loading && <LoadingScreen />}
       {/* Notifications */}
       {/* {notifications.length > 0 && (
