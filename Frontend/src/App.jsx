@@ -462,25 +462,45 @@ const handlePayment = async (table) => {
           {/* Order View */}
           {orders[selectedTable]?.length > 0 && (
             <div>
-              <h4 style={{ color: "#3F51B5", fontWeight: "bold" }}>Order Summary</h4>
-              <ul>
+              <h4 style={{ color: "black", fontWeight: "bold" }}>Order Summary</h4>
+              <ul style={{ paddingLeft: "15px" }}>
                 {orders[selectedTable].map((item, index) => (
-                  <li key={index}>
-                    {item.quantity} x {item.itemName}
+                  <li key={index}  style={{
+                    marginBottom: "5px",
+                    padding: "5px",
+                    listStyle: "none",
+                  }}>
+                    <span
+                        style={{
+                          fontStyle: "italic",
+                          color: "black",
+                          fontSize: "14px",
+                          fontWeight: "bold",
+                          listStyle: "none",
+                          borderRadius: "8px",
+                          padding: "5px 10px",
+                          backgroundColor: "snow",
+                          boxShadow: "0 10px 14px rgba(0, 0, 0, 0.2)",
+                        }}
+                      >
+                        <strong style={{ color: "#732626" }}> {item.quantity}x</strong> {item.itemName} 
+                      </span>
                     <button
                       onClick={() => removeItem(index)}
                       style={{
                         backgroundColor: "#F44336", // Red
                         color: "white",
                         border: "none",
-                        padding: "0 5px",
-                        borderRadius: "2px",
+                        borderRadius: "8px",
+                        padding: "0px 10px",
                         fontSize: "16px",
                         marginLeft: "10px",
                         cursor: "pointer",
+                        boxShadow: "0 10px 14px rgba(0, 0, 0, 0.2)",
+                        fontWeight: "bold",
                       }}
                     >
-                      X
+                      ×
                     </button>
                   </li>
                 ))}
@@ -493,9 +513,10 @@ const handlePayment = async (table) => {
                   padding: "10px",
                   borderRadius: "5px",
                   cursor: "pointer",
-                  width: "100%",
+                  width: "80%",
                   fontSize: "16px",
                   marginTop: "10px",
+                  fontWeight: "bold",
                 }}
               >
                 Create Bill
