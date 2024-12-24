@@ -548,6 +548,10 @@ const handlePayment = async (table) => {
           Object.entries(ordersShow).map(([tableId, tableOrders]) => (
             <div
               key={tableId}
+              style={{
+                padding: "3px 6px",
+                backgroundColor: "#F9F9F9",
+              }}
             >
               <h4
                 style={{
