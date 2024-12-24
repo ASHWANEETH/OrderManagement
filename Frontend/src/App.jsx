@@ -542,7 +542,7 @@ const handlePayment = async (table) => {
 
       {/* Show Orders View */}
       {role === "Show Orders" && (
-        <div style={{ padding: "10px", fontFamily: "Arial, sans-serif" }}>
+        <div style={{ padding: "5px", fontFamily: "Arial, sans-serif" }}>
         <h3 style={{ color: "black", fontWeight: "bold", marginBottom: "5px" }}>All Orders:</h3>
         {Object.keys(ordersShow).length > 0 ? (
           Object.entries(ordersShow).map(([tableId, tableOrders]) => (
