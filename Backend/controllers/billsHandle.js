@@ -1,3 +1,10 @@
+const TelegramBot = require('node-telegram-bot-api');
+
+// Initialize your Telegram bot with the token
+const botToken = '7887952171:AAFXFcd1fmsYOrrL0vt8_AkuacfvDIdgNGs';
+const chatId = '1957794102'; // Replace with your chat ID
+const bot = new TelegramBot(botToken, { polling: false });
+
 const Bill = require("../models/Bill");
 const TableOrder = require("../models/TableOrder");
 
@@ -30,6 +37,17 @@ async function handlePutBill(req, res) {
       { $set: { orders: [] } },
       { new: true } // Return the updated document
     );
+
+      // Construct the message
+    let message = `New Order from Table ${tableId}:\n\n`;
+    orders.forEach((order) => {
+      message += `- ${order.itemName}: ${order.quantity}\n`;
+    });
+
+    // Send the message via Telegram
+    await bot.sendMessage(chatId, message);
+
+    // Respond with success
     res.status(201).end();
   } catch (err) {
     // console.error(err); // Log error to the console for debugging
