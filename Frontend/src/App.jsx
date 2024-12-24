@@ -550,10 +550,10 @@ const handlePayment = async (table) => {
               key={tableId}
               style={{
                 marginBottom: "20px",
-                padding: "3px 10px",
+                padding: "1px 10px 4px 10px",
                 backgroundColor: "#F9F9F9",
-                border: "1px solid grey",
-                borderRadius: "5px",
+                boxShadow: "0 14px 18px rgba(0, 0, 0, 0.1)",
+
               }}
             >
               <h4
