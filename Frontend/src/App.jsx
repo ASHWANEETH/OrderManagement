@@ -486,7 +486,7 @@ const handlePayment = async (table) => {
           </div>
 
           {/* Item Suggestions */}
-          <div style={{ marginBottom: "20px" }}>
+          <div style={{ margin: "0px 0px 20px 10px" }}>
             {suggestions.map((item, index) => (
               <div key={index} style={{ padding: "5px", marginBottom: "10px", fontWeight: "bold" }}>
                 {item.item} - ₹{item.price.toFixed(2)}
@@ -496,11 +496,11 @@ const handlePayment = async (table) => {
                     backgroundColor: "#FFEB3B", // Light Yellow
                     color: "black",
                     border: "none",
-                    padding: "5px 10px",
+                    padding: "5px 15px",
                     marginLeft: "10px",
                     cursor: "pointer",
                     fontSize: "14px",
-                    borderRadius: "5px",
+                    borderRadius: "20px",
                   }}
                 >
                   Add
