@@ -780,7 +780,7 @@ const LoadingScreen = () => {
           src="https://lottie.host/e2ecede1-b89d-4c13-a886-9bbc0bccb10c/4oDBIBEVpr.json"
           background="transparent"
           speed="1"
-          style={{ width: "100px", height: "100px" }}
+          style={{ width: "200px", height: "200px" }}
           loop
           autoplay
         ></lottie-player>
@@ -814,7 +814,7 @@ const styles = {
     marginTop: "10px",
     fontSize: "14px",
     fontWeight: "bold",
-    color: "#3F51B5",
+    color: "black",
     fontFamily: "Arial, sans-serif",
   },
 };
