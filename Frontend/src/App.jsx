@@ -784,7 +784,7 @@ const LoadingScreen = () => {
           autoplay
         ></lottie-player>
       </div>
-      <p style={styles.loadingText}>Loading...</p>
+      <p style={styles.loadingText}>Working On it ....</p>
     </div>
   );
 };
