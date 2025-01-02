@@ -785,7 +785,7 @@ const LoadingScreen = () => {
           src="https://lottie.host/e2ecede1-b89d-4c13-a886-9bbc0bccb10c/4oDBIBEVpr.json"
           background="transparent"
           speed="1"
-          style={{ width: "200px", height: "200px" }}
+          style={{ width: "150px", height: "150px" }}
           loop
           autoplay
         ></lottie-player>
