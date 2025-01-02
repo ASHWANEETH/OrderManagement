@@ -333,327 +333,443 @@ const handlePayment = async (table) => {
       <h1 style={{ textAlign: "center", color: "Black", fontWeight: "bold" }}>Order Management
       </h1>
 
-      {/* Role Selection */}
-      <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
-        <button
-          onClick={() => setRole("Take Order")}
-          style={{
-            padding: "15px",
-            backgroundColor: role === "Take Order" ? "#4d1919" : "#ccc",
-            color: "white",
-            margin: "5px",
-            borderRadius: "5px",
-            border: "none",
-            width: "100px",
-            fontSize: "16px",
-            cursor: "pointer",
-            fontWeight:role === "Take Order"? "bold" :""
-          }}
-        >
-          Take Order
-        </button>
-        <button
-          onClick={() => setRole("Show Orders")}
-          style={{
-            padding: "15px",
-            backgroundColor: role === "Show Orders" ? "#4d1919" : "#ccc",
-            color: "white",
-            margin: "5px",
-            borderRadius: "5px",
-            border: "none",
-            width: "100px",
-            fontSize: "16px",
-            cursor: "pointer",
-            fontWeight:role === "Show Orders"? "bold" :""
-          }}
-        >
-          Show Orders
-        </button>
-      </div>
+     {/* Role Selection */}
+<div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
+  <button
+    onClick={() => setRole("Take Order")}
+    style={{
+      padding: "15px",
+      backgroundColor: role === "Take Order" ? "#b50e2d" : "#ddd",  // Dark red for active state
+      color: "white",
+      margin: "5px",
+      borderRadius: "12px",  // More rounded corners for a premium feel
+      border: "none",
+      width: "120px",
+      fontSize: "16px",
+      cursor: "pointer",
+      fontWeight: role === "Take Order" ? "bold" : "normal",
+      boxShadow: role === "Take Order" ? "0 4px 15px rgba(0, 0, 0, 0.2)" : "none", // Soft shadow for active button
+      transition: "all 0.3s ease",  // Smooth transition for hover and active states
+    }}
+    onMouseEnter={(e) => e.target.style.backgroundColor = "#d91e3c"}  // Hover state
+    onMouseLeave={(e) => e.target.style.backgroundColor = role === "Take Order" ? "#b50e2d" : "#ddd"}  // Reset on hover leave
+  >
+    Take Order
+  </button>
+  <button
+    onClick={() => setRole("Show Orders")}
+    style={{
+      padding: "15px",
+      backgroundColor: role === "Show Orders" ? "#b50e2d" : "#ddd",  // Dark red for active state
+      color: "white",
+      margin: "5px",
+      borderRadius: "12px",  // More rounded corners for a premium feel
+      border: "none",
+      width: "120px",
+      fontSize: "16px",
+      cursor: "pointer",
+      fontWeight: role === "Show Orders" ? "bold" : "normal",
+      boxShadow: role === "Show Orders" ? "0 4px 15px rgba(0, 0, 0, 0.2)" : "none", // Soft shadow for active button
+      transition: "all 0.3s ease",  // Smooth transition for hover and active states
+    }}
+    onMouseEnter={(e) => e.target.style.backgroundColor = "#d91e3c"}  // Hover state
+    onMouseLeave={(e) => e.target.style.backgroundColor = role === "Show Orders" ? "#b50e2d" : "#ddd"}  // Reset on hover leave
+  >
+    Show Orders
+  </button>
+</div>
+
 
       {/* Table Selection */}
-      {role == "Take Order" && (
-        <div>
-        <h3 style={{ textAlign: "center", color: "black", fontWeight: "bold" }}>Select Table</h3>
-        <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", marginBottom: "20px" }}>
-          {[1, 2, 3, 4, 5, 6].map((table) => (
-            <button
-              key={table}
-              onClick={() => TableData(table)}
-              style={{
-                padding: "8px",
-                margin: "5px",
-                width: "120px",
-                backgroundColor:  selectedTable === table ? "#4d1919" : "#ccc",
-                color: "white",
-                border: "none",
-                borderRadius: "5px",
-                fontWeight:selectedTable === table ? "bold" : "",
-                fontSize: "16px",
-                cursor: "pointer",
-              }}
-            >
-              Table {table}
-            </button>
-          ))}
-        </div>
-        </div>
-      )}
+{role == "Take Order" && (
+  <div>
+    <h3 style={{ textAlign: "center", color: "#333", fontWeight: "bold", fontSize: "24px", marginBottom: "20px" }}>Select Table</h3>
+    <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", marginBottom: "20px" }}>
+      {[1, 2, 3, 4, 5, 6].map((table) => (
+        <button
+          key={table}
+          onClick={() => TableData(table)}
+          style={{
+            padding: "12px",
+            margin: "10px",
+            width: "130px",
+            backgroundColor: selectedTable === table ? "#b50e2d" : "#ddd",  // Premium red for active, soft gray for inactive
+            color: "white",
+            border: "none",
+            borderRadius: "15px",  // More rounded for a modern premium look
+            fontWeight: selectedTable === table ? "bold" : "normal", 
+            fontSize: "18px",  // Slightly larger font size for better readability
+            cursor: "pointer",
+            boxShadow: selectedTable === table ? "0 4px 20px rgba(0, 0, 0, 0.2)" : "none",  // Soft shadow on active button
+            transition: "all 0.3s ease",  // Smooth transition for hover and active states
+          }}
+          onMouseEnter={(e) => e.target.style.backgroundColor = "#d91e3c"}  // Hover effect
+          onMouseLeave={(e) => e.target.style.backgroundColor = selectedTable === table ? "#b50e2d" : "#ddd"}  // Reset on hover leave
+        >
+          Table {table}
+        </button>
+      ))}
+    </div>
+  </div>
+)}
+
       
 
       {/* Take Order View */}
-      {role === "Take Order" && selectedTable && (
-        <div>
-          <h3 style={{ color: "black", fontWeight: "bold" }}>Taking Orders for Table {selectedTable}</h3>
+{role === "Take Order" && selectedTable && (
+  <div style={{ padding: "20px", backgroundColor: "#fafafa", borderRadius: "10px", boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)", maxWidth: "600px", margin: "0 auto" }}>
+    <h3 style={{ color: "#333", fontWeight: "bold", fontSize: "24px", textAlign: "center", marginBottom: "20px" }}>Taking Orders for Table {selectedTable}</h3>
 
-          {/* Input for Items */}
-          <div style={{ display: "flex", marginBottom: "15px" }}>
-            <input
-              type="number"
-              min="1"
-              value={quantity}
-              onChange={(e) => setQuantity(Number(e.target.value))}
-              style={{
-                width: "60px",
-                marginRight: "10px",
-                padding: "10px",
-                fontSize: "16px",
-                borderRadius: "5px",
-                border: "1px solid #ccc",
-              }}
-            />
-            <input
-              type="text"
-              placeholder="Search for items"
-              value={itemName}
-              onChange={(e) => setItemName(e.target.value)}
-              style={{
-                flex: 1,
-                padding: "10px",
-                fontSize: "16px",
-                borderRadius: "5px",
-                border: "1px solid #ccc",
-              }}
-            />
-           
-          </div>
+    {/* Input for Items */}
+    <div style={{ display: "flex", marginBottom: "25px", justifyContent: "center", alignItems: "center" }}>
+      <input
+        type="number"
+        min="1"
+        value={quantity}
+        onChange={(e) => setQuantity(Number(e.target.value))}
+        style={{
+          width: "70px",
+          marginRight: "20px",
+          padding: "12px",
+          fontSize: "18px",
+          borderRadius: "8px",
+          border: "1px solid #ccc",
+          backgroundColor: "#fff",
+          boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+          transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+        }}
+        onFocus={(e) => e.target.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.2)"} // Focus effect
+        onBlur={(e) => e.target.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)"}
+      />
+      <input
+        type="text"
+        placeholder="Search for items"
+        value={itemName}
+        onChange={(e) => setItemName(e.target.value)}
+        style={{
+          flex: 1,
+          padding: "12px",
+          fontSize: "18px",
+          borderRadius: "8px",
+          border: "1px solid #ccc",
+          backgroundColor: "#fff",
+          boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+          transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+        }}
+        onFocus={(e) => e.target.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.2)"}
+        onBlur={(e) => e.target.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)"}
+      />
+    </div>
 
-          {/* Item Suggestions */}
-          <div style={{ marginBottom: "20px" }}>
-            {suggestions.map((item, index) => (
-              <div key={index} style={{ padding: "5px", marginBottom: "10px", fontWeight: "bold" }}>
-                {item.item} - ₹{item.price.toFixed(2)}
-                <button
-                  onClick={() => addToOrder(item)}
-                  style={{
-                    backgroundColor: "#FFEB3B", // Light Yellow
-                    color: "black",
-                    border: "none",
-                    padding: "5px 10px",
-                    marginLeft: "10px",
-                    cursor: "pointer",
-                    fontSize: "14px",
-                    borderRadius: "5px",
-                  }}
-                >
-                  Add
-                </button>
-              </div>
-            ))}
-          </div>
+
+         {/* Item Suggestions */}
+<div style={{ marginBottom: "30px", padding: "20px", backgroundColor: "#f9f9f9", borderRadius: "10px", boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)" }}>
+  <h3 style={{ fontSize: "22px", color: "#333", textAlign: "center", marginBottom: "20px", fontWeight: "bold" }}>Item Suggestions</h3>
+  {suggestions.map((item, index) => (
+    <div
+      key={index}
+      style={{
+        padding: "15px",
+        marginBottom: "15px",
+        backgroundColor: "#fff",
+        borderRadius: "8px",
+        boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        fontWeight: "bold",
+        fontSize: "16px",
+        transition: "all 0.3s ease",
+      }}
+      onMouseEnter={(e) => e.target.style.transform = "scale(1.02)"} // Hover effect for each item
+      onMouseLeave={(e) => e.target.style.transform = "scale(1)"}
+    >
+      <div>
+        {item.item} - ₹{item.price.toFixed(2)}
+      </div>
+      <button
+        onClick={() => addToOrder(item)}
+        style={{
+          backgroundColor: "#FFEB3B",  // Premium light yellow
+          color: "black",
+          border: "none",
+          padding: "8px 15px",
+          marginLeft: "15px",
+          cursor: "pointer",
+          fontSize: "16px",
+          borderRadius: "25px",
+          fontWeight: "bold",
+          transition: "background-color 0.3s ease, transform 0.3s ease",
+        }}
+        onMouseEnter={(e) => e.target.style.backgroundColor = "#FFCA28"} // Hover effect
+        onMouseLeave={(e) => e.target.style.backgroundColor = "#FFEB3B"} // Reset on hover leave
+      >
+        Add
+      </button>
+    </div>
+  ))}
+</div>
+
 
           {/* Order View */}
-          {orders[selectedTable]?.length > 0 && (
-            <div>
-              <h4 style={{ color: "black", fontWeight: "bold" }}>Order Summary</h4>
-              <ul style={{ paddingLeft: "15px" }}>
-                {orders[selectedTable].map((item, index) => (
-                  <li key={index}  style={{
-                    marginBottom: "5px",
-                    padding: "5px",
-                    listStyle: "none",
-                  }}>
-                    <span
-                        style={{
-                          fontStyle: "italic",
-                          color: "black",
-                          fontSize: "16px",
-                          fontWeight: "bold",
-                          listStyle: "none",
-                          borderRadius: "8px",
-                          padding: "5px 10px",
-                          backgroundColor: "snow",
-                          boxShadow: "0 10px 14px rgba(0, 0, 0, 0.2)",
-                        }}
-                      >
-                        <strong style={{ color: "#732626" }}> {item.quantity}x</strong> {item.itemName} 
-                      </span>
-                    <button
-                      onClick={() => removeItem(index)}
-                      style={{
-                        backgroundColor: "#F44336", // Red
-                        color: "white",
-                        border: "none",
-                        borderRadius: "8px",
-                        padding: "0px 10px",
-                        fontSize: "16px",
-                        marginLeft: "10px",
-                        cursor: "pointer",
-                        boxShadow: "0 10px 14px rgba(0, 0, 0, 0.2)",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      ×
-                    </button>
-                  </li>
-                ))}
-              </ul>
-              <center>
-              <button
-                onClick={createBill}
-                style={{
-                  backgroundColor: "#FFB74D", // Light Orange
-                  color: "black",
-                  padding: "10px",
-                  borderRadius: "5px",
-                  cursor: "pointer",
-                  width: "90%",
-                  fontSize: "16px",
-                  marginTop: "10px",
-                  fontWeight: "bold",
-                }}
-              >
-                Create Bill
-              </button></center>
-            </div>
-          )}
-           {/* Bill View */}
-      {Object.keys(bill).map((table) => (
-        <div
-          key={table}
-          style={{
-            marginTop: "20px",
-            padding: "20px",
-            backgroundColor: "#fff",
-            borderRadius: "10px",
-            boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-            marginBottom: "20px",
-          }}
+{orders[selectedTable]?.length > 0 && (
+  <div style={{ padding: "20px", backgroundColor: "#fff", borderRadius: "10px", boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)", marginTop: "20px" }}>
+    <h4 style={{ color: "#333", fontWeight: "bold", fontSize: "24px", textAlign: "center", marginBottom: "20px" }}>Order Summary</h4>
+    
+    <ul style={{ paddingLeft: "15px", listStyle: "none" }}>
+      {orders[selectedTable].map((item, index) => (
+        <li key={index} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "15px", padding: "12px", backgroundColor: "#f9f9f9", borderRadius: "8px", boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", transition: "all 0.3s ease" }} 
+            onMouseEnter={(e) => e.target.style.transform = "scale(1.02)"}
+            onMouseLeave={(e) => e.target.style.transform = "scale(1)"}
         >
-          <h3 style={{ color: "#512DA8", fontWeight: "bold" }}>Bill for Table {bill[table].table}</h3>
-          <ul>
-            {bill[table].items.map((item, index) => (
-              <li key={index}>
-                {item.itemName} - Qty: {item.quantity} - ₹{item.quantity * item.price}
-              </li>
-            ))}
-          </ul>
-          <h4 style={{ fontWeight: "bold" }}>Total: ₹{bill[table].total.toFixed(2)}</h4>
+          <span style={{ fontSize: "16px", fontWeight: "bold", fontStyle: "italic", color: "#333", padding: "5px 10px", backgroundColor: "snow", borderRadius: "8px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
+            <strong style={{ color: "#732626" }}>{item.quantity}x</strong> {item.itemName}
+          </span>
           <button
-            onClick={() => handlePayment(table)}
+            onClick={() => removeItem(index)}
             style={{
-              backgroundColor: "#FFEB3B", // Light Yellow
-              color: "black",
-              padding: "15px",
-              width: "100%",
-              borderRadius: "5px",
+              backgroundColor: "#F44336", // Red
+              color: "white",
+              border: "none",
+              borderRadius: "50%",
+              padding: "8px 12px",
               fontSize: "18px",
               cursor: "pointer",
-              marginTop: "10px",
+              fontWeight: "bold",
+              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+              transition: "background-color 0.3s ease, transform 0.3s ease",
             }}
+            onMouseEnter={(e) => e.target.style.backgroundColor = "#D32F2F"} // Hover effect for remove button
+            onMouseLeave={(e) => e.target.style.backgroundColor = "#F44336"} // Reset
           >
-            Payment Done
+            ×
           </button>
-        </div>
+        </li>
       ))}
+    </ul>
+
+    <div style={{ textAlign: "center", marginTop: "20px" }}>
+      <button
+        onClick={createBill}
+        style={{
+          backgroundColor: "#FFB74D", // Light Orange
+          color: "black",
+          padding: "12px 30px",
+          borderRadius: "25px",
+          cursor: "pointer",
+          fontSize: "18px",
+          fontWeight: "bold",
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+          transition: "background-color 0.3s ease, transform 0.3s ease",
+        }}
+        onMouseEnter={(e) => e.target.style.backgroundColor = "#FF9800"} // Hover effect for create bill button
+        onMouseLeave={(e) => e.target.style.backgroundColor = "#FFB74D"} // Reset
+      >
+        Create Bill
+      </button>
+    </div>
+  </div>
+)}
+
+          {/* Bill View */}
+{Object.keys(bill).map((table) => (
+  <div
+    key={table}
+    style={{
+      marginTop: "20px",
+      padding: "30px",
+      backgroundColor: "#fff",
+      borderRadius: "15px",
+      boxShadow: "0 6px 18px rgba(0, 0, 0, 0.1)",
+      marginBottom: "25px",
+      transition: "all 0.3s ease",
+    }}
+    onMouseEnter={(e) => e.target.style.transform = "scale(1.03)"}
+    onMouseLeave={(e) => e.target.style.transform = "scale(1)"}
+  >
+    <h3 style={{
+      color: "#512DA8",
+      fontWeight: "bold",
+      fontSize: "24px",
+      marginBottom: "20px",
+      textAlign: "center",
+    }}>
+      Bill for Table {bill[table].table}
+    </h3>
+
+    <ul style={{
+      paddingLeft: "20px",
+      listStyle: "none",
+      fontSize: "16px",
+      fontWeight: "500",
+      color: "#333",
+    }}>
+      {bill[table].items.map((item, index) => (
+        <li key={index} style={{
+          padding: "12px",
+          marginBottom: "10px",
+          backgroundColor: "#f9f9f9",
+          borderRadius: "8px",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.05)",
+          transition: "background-color 0.3s ease",
+        }}
+        onMouseEnter={(e) => e.target.style.backgroundColor = "#f1f1f1"}
+        onMouseLeave={(e) => e.target.style.backgroundColor = "#f9f9f9"}
+        >
+          <strong style={{ color: "#512DA8" }}>
+            {item.itemName} - Qty: {item.quantity} - ₹{(item.quantity * item.price).toFixed(2)}
+          </strong>
+        </li>
+      ))}
+    </ul>
+
+    <h4 style={{
+      fontWeight: "bold",
+      fontSize: "20px",
+      color: "#4CAF50",
+      textAlign: "center",
+      marginTop: "20px",
+    }}>
+      Total: ₹{bill[table].total.toFixed(2)}
+    </h4>
+
+    <button
+      onClick={() => handlePayment(table)}
+      style={{
+        backgroundColor: "#FF9800", // Light Orange
+        color: "white",
+        padding: "15px",
+        width: "100%",
+        borderRadius: "10px",
+        fontSize: "18px",
+        cursor: "pointer",
+        marginTop: "20px",
+        fontWeight: "bold",
+        boxShadow: "0 6px 12px rgba(0, 0, 0, 0.1)",
+        transition: "background-color 0.3s ease, transform 0.3s ease",
+      }}
+      onMouseEnter={(e) => e.target.style.backgroundColor = "#FF5722"} // Hover effect
+      onMouseLeave={(e) => e.target.style.backgroundColor = "#FF9800"} // Reset
+    >
+      Payment Done
+    </button>
+  </div>
+))}
+
         </div>
       )}
 
-      {/* Show Orders View */}
-      {role === "Show Orders" && (
-        <div style={{ padding: "5px", fontFamily: "Arial, sans-serif" }}>
-        <h3 style={{ color: "black", fontWeight: "bold", marginBottom: "5px" }}>All Orders:</h3>
-        {Object.keys(ordersShow).length > 0 ? (
-          Object.entries(ordersShow).map(([tableId, tableOrders]) => (
-            <div
-              key={tableId}
-              style={{
-                padding: "2px 6px 5px 8px",
-                backgroundColor: "#F9F9F9",
-                borderRadius: "8px",
-              }}
-            >
-              <h4
-                style={{
-                  fontWeight: "bold",
-                  color: "black",
-                  marginBottom: "5px",
-                }}
-              >
-                Table {tableId}
-              </h4>
-              {tableOrders && tableOrders.length > 0 ? (
-                <>
-               
-                <ul style={{ paddingLeft: "10px", margin: 0 }}>
-                  {tableOrders.map((item, index) => (
-                    <li
-                      key={index}
-                      style={{
-                        marginBottom: "5px",
-                        padding: "5px",
-                        listStyle: "none",
-                      }}
-                    >
-                      <span
-                        style={{
-                          fontStyle: "italic",
-                          color: "white",
-                          fontSize: "14px",
-                          // marginBottom: "5px",
-                          listStyle: "none",
-                          border: "1px solid grey",
-                          borderRadius: "8px",
-                          padding: "5px 10px",
-                          backgroundColor: "black",
-                          boxShadow: "0 12px 14px rgba(0, 0, 0, 0.3)",
-                        }}
-                      >
-                        {item.itemName} <strong style={{ color: "yellow" }}>x {item.quantity}</strong>
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                {/* <hr /> */}
-                </>
-              ) : (
-                <p
-                  style={{
-                    fontStyle: "italic",
-                    color: "#999",
-                    paddingLeft:"15px",
-                    marginTop: "5px",
-                  }}
-                >
-                  No orders available.
-                </p>
-              )}
-            </div>
-          ))
-        ) : (
-          <p
+     {/* Show Orders View */}
+{role === "Show Orders" && (
+  <div style={{ padding: "20px", fontFamily: "Arial, sans-serif", backgroundColor: "#F4F4F4" }}>
+    <h3
+      style={{
+        color: "#512DA8",
+        fontWeight: "bold",
+        marginBottom: "20px",
+        textAlign: "center",
+        fontSize: "24px",
+        textTransform: "uppercase",
+      }}
+    >
+      All Orders
+    </h3>
+
+    {Object.keys(ordersShow).length > 0 ? (
+      Object.entries(ordersShow).map(([tableId, tableOrders]) => (
+        <div
+          key={tableId}
+          style={{
+            padding: "15px 20px",
+            marginBottom: "20px",
+            backgroundColor: "#fff",
+            borderRadius: "10px",
+            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+            transition: "transform 0.3s ease-in-out",
+            cursor: "pointer",
+          }}
+          onMouseEnter={(e) => e.target.style.transform = "scale(1.02)"}
+          onMouseLeave={(e) => e.target.style.transform = "scale(1)"}
+        >
+          <h4
             style={{
-              fontStyle: "italic",
-              color: "#999",
+              fontWeight: "bold",
+              color: "#333",
+              marginBottom: "15px",
+              fontSize: "20px",
               textAlign: "center",
-              marginTop: "5px",
+              textTransform: "capitalize",
             }}
           >
-            Loading Orders...
-          </p>
-        )}
-      </div>
-      )}
+            Table {tableId}
+          </h4>
+
+          {tableOrders && tableOrders.length > 0 ? (
+            <ul style={{ paddingLeft: "15px", margin: 0 }}>
+              {tableOrders.map((item, index) => (
+                <li
+                  key={index}
+                  style={{
+                    marginBottom: "10px",
+                    padding: "12px",
+                    backgroundColor: "#F1F1F1",
+                    borderRadius: "8px",
+                    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                    transition: "background-color 0.3s ease",
+                  }}
+                  onMouseEnter={(e) => e.target.style.backgroundColor = "#E0E0E0"}
+                  onMouseLeave={(e) => e.target.style.backgroundColor = "#F1F1F1"}
+                >
+                  <span
+                    style={{
+                      fontStyle: "italic",
+                      fontSize: "16px",
+                      fontWeight: "600",
+                      listStyle: "none",
+                      padding: "8px 15px",
+                      backgroundColor: "#4CAF50", // Green for items
+                      color: "white",
+                      borderRadius: "8px",
+                      boxShadow: "0 6px 12px rgba(0, 0, 0, 0.1)",
+                    }}
+                  >
+                    {item.itemName}{" "}
+                    <strong style={{ color: "#FFEB3B" }}>x {item.quantity}</strong>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p
+              style={{
+                fontStyle: "italic",
+                color: "#999",
+                paddingLeft: "15px",
+                marginTop: "5px",
+                textAlign: "center",
+              }}
+            >
+              No orders available.
+            </p>
+          )}
+        </div>
+      ))
+    ) : (
+      <p
+        style={{
+          fontStyle: "italic",
+          color: "#999",
+          textAlign: "center",
+          marginTop: "20px",
+          fontSize: "18px",
+        }}
+      >
+        Loading Orders...
+      </p>
+    )}
+  </div>
+)}
+
      
     </div>  
   ); 
