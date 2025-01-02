@@ -274,6 +274,7 @@ const removeItem = async (index) => {
   // await postNotification(notificationMessage);
   // Trigger data refresh for orders and bills
   setRem(false);
+  setShowAlert(false);
   refreshData();
   setLoading(false);
 };
@@ -518,29 +519,31 @@ const handlePayment = async (table) => {
       top: "50%", // Centers vertically
       left: "50%", // Centers horizontally
       transform: "translate(-50%, -50%)", // Adjust to center properly
-      padding: "20px",
+      padding: "30px", // Increased padding for a larger box
       backgroundColor: "#fff", // White background
       color: "black",
-      fontSize: "16px",
+      fontSize: "18px", // Increased font size
       fontWeight: "bold",
-      borderRadius: "8px",
+      borderRadius: "12px", // Slightly rounded corners
       boxShadow: "0 12px 20px rgba(0, 0, 0, 0.15)", // Added shadow for emphasis
       zIndex: 1000,
       animation: "fadeIn 0.5s ease-in-out", // Fade-in animation on display
+      backdropFilter: "blur(5px)", // Apply blur to the background
     }}
   >
     <p>Are you sure you want to remove this item?</p>
-    <div style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
+    <div style={{ display: "flex", justifyContent: "center", gap: "15px" }}>
       <button
         onClick={handleConfirmRemoval}
         style={{
           backgroundColor: "#4CAF50", // Green
           color: "white",
-          padding: "8px 16px",
-          borderRadius: "5px",
+          padding: "12px 20px", // Increased padding for larger buttons
+          borderRadius: "8px",
           cursor: "pointer",
           fontWeight: "bold",
           border: "none",
+          fontSize: "16px", // Larger font size for buttons
         }}
       >
         Confirm
@@ -550,11 +553,12 @@ const handlePayment = async (table) => {
         style={{
           backgroundColor: "#F44336", // Red
           color: "white",
-          padding: "8px 16px",
-          borderRadius: "5px",
+          padding: "12px 20px", // Increased padding for larger buttons
+          borderRadius: "8px",
           cursor: "pointer",
           fontWeight: "bold",
           border: "none",
+          fontSize: "16px", // Larger font size for buttons
         }}
       >
         Cancel
@@ -569,6 +573,7 @@ const handlePayment = async (table) => {
     100% { opacity: 1; }
   }
 `}</style>
+
 
 
 
