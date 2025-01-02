@@ -613,8 +613,8 @@ const handlePayment = async (table) => {
                         // boxShadow: "0 10px 14px rgba(0, 0, 0, 0.2)",
                         }}
                       >
-                        <strong style={{ color: "#732626" }}> {item.quantity}x {item.itemName} </strong>
-                    <button
+                        {item.quantity}x {item.itemName}                 
+                           <button
                       onClick={() => triggerRemoveConfirmation(index)}
                       style={{
                         backgroundColor: "#F44336", // Red
