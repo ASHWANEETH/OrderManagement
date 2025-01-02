@@ -18,6 +18,10 @@ export const App = () => {
   const [bill, setBill] = useState({}); // Bill display for each table
   // const [notifications, setNotifications] = useState([" "]); // List of notifications
   const [loading, setLoading] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [Rem, setRem] = useState(false);
+
+  
 
 
 
@@ -232,6 +236,27 @@ const addToOrder = async (menuItem) => {
 
 };
 
+
+
+const triggerRemoveConfirmation = (index) => {
+  setShowAlert(true); // Show the alert
+  setRem(index); // Store the index to be removed
+};
+
+
+const handleConfirmRemoval = () => {
+  if (Rem !== false) {
+    removeItem(Rem);
+  }
+};
+
+const handleCancelRemoval = () => {
+  setShowAlert(false); // Hide the alert without removing the item
+  setRem(false); // Reset the index
+};
+
+
+
 // Remove item from order
 const removeItem = async (index) => {
   setLoading(true);
@@ -248,9 +273,11 @@ const removeItem = async (index) => {
   // // Post notification to backend-------------------------------------
   // await postNotification(notificationMessage);
   // Trigger data refresh for orders and bills
+  setRem(false);
   refreshData();
   setLoading(false);
 };
+
 
 // Create bill and generate total
 const createBill = async () => {
@@ -302,8 +329,13 @@ const handlePayment = async (table) => {
 
 
   return (
+    
   
     <div style={{ fontFamily: "Arial, sans-serif", padding: "2px 20px", backgroundColor: "#f4f4f4" }}>
+
+      
+
+
       {loading && <LoadingScreen />}
       {/* Notifications */}
       {/* {notifications.length > 0 && (
@@ -476,6 +508,71 @@ const handlePayment = async (table) => {
             ))}
           </div>
 
+
+
+{/* Confirmation Alert Box */}
+{showAlert && (
+        <div
+          style={{
+            position: "fixed",
+            top: "20px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            padding: "20px",
+            backgroundColor: "#FFEB3B", // Light Yellow
+            color: "black",
+            fontSize: "16px",
+            fontWeight: "bold",
+            borderRadius: "8px",
+            boxShadow: "0 10px 15px rgba(0, 0, 0, 0.2)",
+            zIndex: 1000,
+            animation: "fadeIn 0.5s ease-in-out, fadeOut 0.5s 3s ease-out",
+          }}
+        >
+          <p>Are you sure you want to remove this item?</p>
+          <button
+            onClick={handleConfirmRemoval}
+            style={{
+              backgroundColor: "#4CAF50", // Green
+              color: "white",
+              padding: "8px 16px",
+              borderRadius: "5px",
+              marginRight: "10px",
+              cursor: "pointer",
+            }}
+          >
+            Confirm
+          </button>
+          <button
+            onClick={handleCancelRemoval} // Cancel
+            style={{
+              backgroundColor: "#F44336", // Red
+              color: "white",
+              padding: "8px 16px",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
+          >
+            Cancel
+          </button>
+        </div>
+      )}
+
+      <style>{`
+        @keyframes fadeIn {
+          0% { opacity: 0; }
+          100% { opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+          0% { opacity: 1; }
+          100% { opacity: 0; }
+        }
+      `}</style>
+
+
+
+
           {/* Order View */}
           {orders[selectedTable]?.length > 0 && (
             <div>
@@ -503,7 +600,7 @@ const handlePayment = async (table) => {
                         <strong style={{ color: "#732626" }}> {item.quantity}x</strong> {item.itemName} 
                       </span>
                     <button
-                      onClick={() => removeItem(index)}
+                      onClick={() => triggerRemoveConfirmation(index)}
                       style={{
                         backgroundColor: "#F44336", // Red
                         color: "white",
