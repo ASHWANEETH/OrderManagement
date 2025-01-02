@@ -679,7 +679,7 @@ const LoadingScreen = () => {
       <div style={styles.animationContainer}>
         {/* Lottie Player */}
         <lottie-player
-          src="https://lottie.host/2dd9369d-dde8-462b-9ea8-47bcb6b4ff8e/qqcw9uKdvv.json"
+          src="https://lottie.host/e2ecede1-b89d-4c13-a886-9bbc0bccb10c/4oDBIBEVpr.json"
           background="transparent"
           speed="1"
           style={{ width: "100px", height: "100px" }}
