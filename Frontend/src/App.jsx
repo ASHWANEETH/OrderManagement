@@ -512,63 +512,64 @@ const handlePayment = async (table) => {
 
 {/* Confirmation Alert Box */}
 {showAlert && (
-        <div
-          style={{
-            position: "fixed",
-            top: "20px",
-            left: "50%",
-            transform: "translateX(-50%)",
-            padding: "20px",
-            backgroundColor: "#FFEB3B", // Light Yellow
-            color: "black",
-            fontSize: "16px",
-            fontWeight: "bold",
-            borderRadius: "8px",
-            boxShadow: "0 10px 15px rgba(0, 0, 0, 0.2)",
-            zIndex: 1000,
-            animation: "fadeIn 0.5s ease-in-out, fadeOut 0.5s 3s ease-out",
-          }}
-        >
-          <p>Are you sure you want to remove this item?</p>
-          <button
-            onClick={handleConfirmRemoval}
-            style={{
-              backgroundColor: "#4CAF50", // Green
-              color: "white",
-              padding: "8px 16px",
-              borderRadius: "5px",
-              marginRight: "10px",
-              cursor: "pointer",
-            }}
-          >
-            Confirm
-          </button>
-          <button
-            onClick={handleCancelRemoval} // Cancel
-            style={{
-              backgroundColor: "#F44336", // Red
-              color: "white",
-              padding: "8px 16px",
-              borderRadius: "5px",
-              cursor: "pointer",
-            }}
-          >
-            Cancel
-          </button>
-        </div>
-      )}
+  <div
+    style={{
+      position: "fixed",
+      top: "50%", // Centers vertically
+      left: "50%", // Centers horizontally
+      transform: "translate(-50%, -50%)", // Adjust to center properly
+      padding: "20px",
+      backgroundColor: "#fff", // White background
+      color: "black",
+      fontSize: "16px",
+      fontWeight: "bold",
+      borderRadius: "8px",
+      boxShadow: "0 12px 20px rgba(0, 0, 0, 0.15)", // Added shadow for emphasis
+      zIndex: 1000,
+      animation: "fadeIn 0.5s ease-in-out", // Fade-in animation on display
+    }}
+  >
+    <p>Are you sure you want to remove this item?</p>
+    <div style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
+      <button
+        onClick={handleConfirmRemoval}
+        style={{
+          backgroundColor: "#4CAF50", // Green
+          color: "white",
+          padding: "8px 16px",
+          borderRadius: "5px",
+          cursor: "pointer",
+          fontWeight: "bold",
+          border: "none",
+        }}
+      >
+        Confirm
+      </button>
+      <button
+        onClick={handleCancelRemoval} // Cancel
+        style={{
+          backgroundColor: "#F44336", // Red
+          color: "white",
+          padding: "8px 16px",
+          borderRadius: "5px",
+          cursor: "pointer",
+          fontWeight: "bold",
+          border: "none",
+        }}
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+)}
 
-      <style>{`
-        @keyframes fadeIn {
-          0% { opacity: 0; }
-          100% { opacity: 1; }
-        }
+<style>{`
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+`}</style>
 
-        @keyframes fadeOut {
-          0% { opacity: 1; }
-          100% { opacity: 0; }
-        }
-      `}</style>
 
 
 
