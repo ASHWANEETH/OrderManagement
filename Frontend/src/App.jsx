@@ -450,7 +450,14 @@ const handlePayment = async (table) => {
 
       {/* Take Order View */}
       {role === "Take Order" && selectedTable && (
-        <div>
+        <div style={{
+          marginTop: "20px",
+          padding: "20px",
+          backgroundColor: "#fff",
+          borderRadius: "10px",
+          boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+          marginBottom: "20px",
+        }} >
           <h3 style={{ color: "black", fontWeight: "bold" }}>Taking Orders for Table {selectedTable}</h3>
 
           {/* Input for Items */}
