@@ -594,24 +594,26 @@ const handlePayment = async (table) => {
                 {orders[selectedTable].map((item, index) => (
                   <li key={index}  style={{
                     marginBottom: "5px",
-                    padding: "5px",
+                    padding: "2px",
                     listStyle: "none",
                   }}>
-                    <span
+                    <div
                         style={{
-                          fontStyle: "italic",
-                          color: "black",
-                          fontSize: "16px",
-                          fontWeight: "bold",
-                          listStyle: "none",
-                          borderRadius: "8px",
-                          padding: "5px 10px",
-                          backgroundColor: "snow",
-                          boxShadow: "0 10px 14px rgba(0, 0, 0, 0.2)",
+                          display:"flex",
+                        justifyContent:"space-between",
+                        // fontStyle: "italic",
+                        color: "black",
+                        fontSize: "16px",
+                        fontWeight: "bold",
+                        width: "90%",
+                        listStyle: "none",
+                        borderRadius: "8px",
+                        padding: "5px 10px",
+                        backgroundColor: "snow",
+                        // boxShadow: "0 10px 14px rgba(0, 0, 0, 0.2)",
                         }}
                       >
-                        <strong style={{ color: "#732626" }}> {item.quantity}x</strong> {item.itemName} 
-                      </span>
+                        <strong style={{ color: "#732626" }}> {item.quantity}x {item.itemName} </strong>
                     <button
                       onClick={() => triggerRemoveConfirmation(index)}
                       style={{
@@ -619,16 +621,17 @@ const handlePayment = async (table) => {
                         color: "white",
                         border: "none",
                         borderRadius: "8px",
-                        padding: "0px 10px",
+                        padding: "4px 15px",
                         fontSize: "16px",
                         marginLeft: "10px",
                         cursor: "pointer",
                         boxShadow: "0 10px 14px rgba(0, 0, 0, 0.2)",
                         fontWeight: "bold",
                       }}
-                    >
+                      >
                       ×
                     </button>
+                      </div>
                   </li>
                 ))}
               </ul>
