@@ -490,7 +490,7 @@ const handlePayment = async (table) => {
          {/* Item Suggestions */}
         <div style={{ margin: "0px 0px 0px 10px" }}>
           {suggestions.map((item, index) => (
-            <div key={index} style={{ fontSize: "13px",padding: "5px", marginBottom: "2px", fontWeight: "bold" }}>
+            <div key={index} style={{ fontSize: "14px",padding: "5px", marginBottom: "2px", fontWeight: "bold" }}>
               {item.item} - ₹{item.price.toFixed(2)}
               <button
                 onClick={() => addToOrder(item)}
