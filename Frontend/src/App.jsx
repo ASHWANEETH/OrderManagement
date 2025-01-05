@@ -487,29 +487,29 @@ const handlePayment = async (table) => {
           />
         </div>
 
-          {/* Item Suggestions */}
-          <div style={{ margin: "0px 0px 20px 10px" }}>
-            {suggestions.map((item, index) => (
-              <div key={index} style={{ padding: "5px", marginBottom: "10px", fontWeight: "bold" }}>
-                {item.item} - ₹{item.price.toFixed(2)}
-                <button
-                  onClick={() => addToOrder(item)}
-                  style={{
-                    backgroundColor: "#FFEB3B", // Light Yellow
-                    color: "black",
-                    border: "none",
-                    padding: "5px 15px",
-                    marginLeft: "10px",
-                    cursor: "pointer",
-                    fontSize: "14px",
-                    borderRadius: "20px",
-                  }}
-                >
-                  Add
-                </button>
-              </div>
-            ))}
-          </div>
+         {/* Item Suggestions */}
+        <div style={{ margin: "0px 0px 0px 10px" }}>
+          {suggestions.map((item, index) => (
+            <div key={index} style={{ fontSize: "13px",padding: "5px", marginBottom: "2px", fontWeight: "bold" }}>
+              {item.item} - ₹{item.price.toFixed(2)}
+              <button
+                onClick={() => addToOrder(item)}
+                style={{
+                  backgroundColor: "#FFEB3B", // Light Yellow
+                  color: "black",
+                  border: "none",
+                  padding: "4px 15px",
+                  marginLeft: "10px",
+                  cursor: "pointer",
+                  fontSize: "12px",
+                  borderRadius: "20px",
+                }}
+              >
+                Add
+              </button>
+            </div>
+          ))}
+        </div>
 
 
 
