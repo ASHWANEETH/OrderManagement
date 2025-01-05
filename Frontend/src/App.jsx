@@ -582,73 +582,87 @@ const handlePayment = async (table) => {
 
 
           {/* Order View */}
-          {orders[selectedTable]?.length > 0 && (
-            <div>
-              <h4 style={{ color: "black", fontWeight: "bold" }}>Order Summary</h4>
-              <ul style={{ paddingLeft: "15px" }}>
-                {orders[selectedTable].map((item, index) => (
-                  <li key={index}  style={{
-                    marginBottom: "5px",
-                    padding: "2px",
-                    listStyle: "none",
-                  }}>
-                    <div
-                        style={{
-                          display:"flex",
+        {orders[selectedTable]?.length > 0 && (
+          <div style={{
+            marginTop: "10px",
+            padding: "15px",
+            backgroundColor: "#fff",
+            borderRadius: "10px",
+            boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+            marginBottom: "10px",
+          }}>
+            <h4 style={{ color: "black", fontWeight: "bold" ,marginBottom: "10px"}}>Order Details</h4>
+            <ul style={{ padding: "0px 10px" }}>
+              {orders[selectedTable].map((item, index) => (
+                <li key={index}  style={{
+                  // marginBottom: "5px",
+                  padding: "2px ",
+                  listStyle: "none",
+                }}>
+                  <div
+                      style={{
+                        display:"flex",
                         justifyContent:"space-between",
                         // fontStyle: "italic",
                         color: "black",
                         fontSize: "16px",
                         fontWeight: "bold",
-                        width: "90%",
+                        // width: "90%",
                         listStyle: "none",
                         borderRadius: "8px",
-                        padding: "5px 10px",
-                        backgroundColor: "snow",
+                        padding: "3px 10px",
+                        backgroundColor: "#f5f0d7",
                         // boxShadow: "0 10px 14px rgba(0, 0, 0, 0.2)",
-                        }}
-                      >
-                        {item.quantity}x {item.itemName}                 
-                           <button
-                      onClick={() => triggerRemoveConfirmation(index)}
-                      style={{
-                        backgroundColor: "#F44336", // Red
-                        color: "white",
-                        border: "none",
-                        borderRadius: "8px",
-                        padding: "4px 15px",
-                        fontSize: "16px",
-                        marginLeft: "10px",
-                        cursor: "pointer",
-                        boxShadow: "0 10px 14px rgba(0, 0, 0, 0.2)",
-                        fontWeight: "bold",
                       }}
-                      >
-                      ×
-                    </button>
-                      </div>
-                  </li>
-                ))}
-              </ul>
-              <center>
-              <button
-                onClick={createBill}
-                style={{
-                  backgroundColor: "#FFB74D", // Light Orange
-                  color: "black",
-                  padding: "10px",
-                  borderRadius: "5px",
-                  cursor: "pointer",
-                  width: "90%",
-                  fontSize: "16px",
-                  marginTop: "10px",
-                  fontWeight: "bold",
-                }}
-              >
-                Create Bill
-              </button></center>
-            </div>
-          )}
+                    >
+                      {item.quantity}x  {item.itemName}
+
+                      <button
+                    // onClick={() => triggerRemoveConfirmation(index)}
+                    style={{
+                      backgroundColor: "#F44336", // Red
+                      color: "white",
+                      border: "none",
+                      borderRadius: "8px",
+                      padding: "2px 15px",
+                      fontSize: "16px",
+                      marginLeft: "10px",
+                      cursor: "pointer",
+                      boxShadow: "0 10px 14px rgba(0, 0, 0, 0.2)",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    ×
+                  </button>
+                    </div>
+                  
+                </li>
+              ))}
+            </ul>
+            <center>
+            <button
+              onClick={createBill}
+              style={{
+                backgroundColor: "#fac082", // Light Orange
+                color: "black",
+                padding: "10px",
+                borderRadius: "15px",
+                cursor: "pointer",
+                width: "100%",
+                fontSize: "14px",
+                marginTop: "10px",
+                fontWeight: "bold",
+                border:"2px solid black",
+                boxShadow: "0 10px 14px rgba(0, 0, 0, 0.2)",
+              }}
+            >
+              Create Bill
+            </button></center>
+          </div>
+        )
+        }
+
+        
            {/* Bill View */}
       {Object.keys(bill).map((table) => (
         <div
