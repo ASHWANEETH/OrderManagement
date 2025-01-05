@@ -450,47 +450,42 @@ const handlePayment = async (table) => {
 
       {/* Take Order View */}
       {role === "Take Order" && selectedTable && (
-        <div style={{
-          marginTop: "20px",
-          padding: "20px",
-          backgroundColor: "#fff",
-          borderRadius: "10px",
-          boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-          marginBottom: "20px",
-        }} >
-          <h3 style={{ color: "black", fontWeight: "bold" }}>Taking Orders for Table {selectedTable}</h3>
+        <div >
+          <h3 style={{ color: "black", fontWeight: "bold",marginBottom:"5px" }}>Taking Orders for Table {selectedTable}</h3>
 
           {/* Input for Items */}
-          <div style={{ display: "flex", marginBottom: "15px" }}>
-            <input
-              type="number"
-              min="1"
-              value={quantity}
-              onChange={(e) => setQuantity(Number(e.target.value))}
-              style={{
-                width: "60px",
-                marginRight: "10px",
-                padding: "10px",
-                fontSize: "16px",
-                borderRadius: "15px",
-                border: "1px solid #ccc",
-              }}
-            />
-            <input
-              type="text"
-              placeholder="Search for items"
-              value={itemName}
-              onChange={(e) => setItemName(e.target.value)}
-              style={{
-                flex: 1,
-                padding: "10px",
-                fontSize: "16px",
-                borderRadius: "5px",
-                border: "1px solid #ccc",
-              }}
-            />
-           
-          </div>
+          <div style={{ display: "flex", marginBottom: "10px" }}>
+          <input
+            type="number"
+            min="1"
+            value={quantity}
+            onChange={(e) => setQuantity(Number(e.target.value))}
+            style={{
+              width: "10%",
+              marginRight: "5px",
+              marginLeft: "5px",
+              padding: "5px",
+              fontSize: "14px",
+              borderRadius: "15px",
+              border: "1px solid #ccc",
+            }}
+          />
+          <input
+            type="text"
+            placeholder=" Search for items"
+            value={itemName}
+            onChange={(e) => setItemName(e.target.value)}
+            style={{
+              marginRight: "5px",
+              marginLeft: "5px",
+              flex: 1,
+              padding: "5px",
+              fontSize: "14px",
+              borderRadius: "15px",
+              border: "1px solid #ccc",
+            }}
+          />
+        </div>
 
           {/* Item Suggestions */}
           <div style={{ margin: "0px 0px 20px 10px" }}>
