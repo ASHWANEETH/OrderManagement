@@ -472,7 +472,7 @@ const handlePayment = async (table) => {
                 marginRight: "10px",
                 padding: "10px",
                 fontSize: "16px",
-                borderRadius: "5px",
+                borderRadius: "15px",
                 border: "1px solid #ccc",
               }}
             />
