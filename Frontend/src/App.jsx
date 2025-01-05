@@ -332,7 +332,7 @@ const handlePayment = async (table) => {
   return (
     
   
-    <div style={{ fontFamily: "Arial, sans-serif", padding: "2px 20px", backgroundColor: "#f4f4f4" }}>
+    <div style={{ fontFamily: "Arial, sans-serif", padding: "2px 10px", backgroundColor: "#f4f4f4" }}>
 
       
 
@@ -367,18 +367,18 @@ const handlePayment = async (table) => {
       </h1>
 
      {/* Role Selection */}
-<div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
+<div style={{ display: "flex", justifyContent: "center", marginBottom: "5px" }}>
   <button
     onClick={() => setRole("Take Order")}
     style={{
-      padding: "15px",
+      padding: "10px",
       backgroundColor: role === "Take Order" ? "#b50e2d" : "#ddd",  // Dark red for active state
       color: "white",
       margin: "5px",
       borderRadius: "12px",  // More rounded corners for a premium feel
       border: "none",
-      width: "120px",
-      fontSize: "16px",
+      // width: "120px",
+      fontSize: "14px",
       cursor: "pointer",
       fontWeight: role === "Take Order" ? "bold" : "normal",
       boxShadow: role === "Take Order" ? "0 4px 15px rgba(0, 0, 0, 0.2)" : "none", // Soft shadow for active button
@@ -392,14 +392,14 @@ const handlePayment = async (table) => {
   <button
     onClick={() => setRole("Show Orders")}
     style={{
-      padding: "15px",
+      padding: "10px",
       backgroundColor: role === "Show Orders" ? "#b50e2d" : "#ddd",  // Dark red for active state
       color: "white",
       margin: "5px",
       borderRadius: "12px",  // More rounded corners for a premium feel
       border: "none",
-      width: "120px",
-      fontSize: "16px",
+      // width: "120px",
+      fontSize: "14px",
       cursor: "pointer",
       fontWeight: role === "Show Orders" ? "bold" : "normal",
       boxShadow: role === "Show Orders" ? "0 4px 15px rgba(0, 0, 0, 0.2)" : "none", // Soft shadow for active button
