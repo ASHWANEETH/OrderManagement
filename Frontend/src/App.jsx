@@ -618,7 +618,7 @@ const handlePayment = async (table) => {
                       {item.quantity}x  {item.itemName}
 
                       <button
-                    // onClick={() => triggerRemoveConfirmation(index)}
+                    onClick={() => triggerRemoveConfirmation(index)}
                     style={{
                       backgroundColor: "#F44336", // Red
                       color: "white",
@@ -662,7 +662,7 @@ const handlePayment = async (table) => {
         )
         }
 
-        
+
            {/* Bill View */}
       {Object.keys(bill).map((table) => (
         <div
