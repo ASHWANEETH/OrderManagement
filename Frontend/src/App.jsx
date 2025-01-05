@@ -662,48 +662,66 @@ const handlePayment = async (table) => {
         )
         }
 
+ {/* Bill View */}
+        
+ {Object.keys(bill).map((table) => (
+      
+      
+      <div
+        key={table}
+        style={{
+          marginTop: "10px",
+          padding: "10px",
+          backgroundColor: "#fff",
+          borderRadius: "10px",
+          boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+          // marginBottom: "20px",
+        }}
+      >
+        <h3 style={{ color: "black", fontWeight: "bold" ,marginBottom: "10px"}}>Bill for Table {bill[table].table}</h3>
+        <ul style={{ padding: "0px 10px" }}>
+          {bill[table].items.map((item, index) => (
+            <li style={{ color: "black", fontSize: "14px",}}  key={index}>
+              {item.itemName} &nbsp; Qty: {item.quantity} × ₹{item.price} = ₹{item.quantity * item.price}
+            </li>
+          ))}
+        </ul>
+        
+        <h4 style={{ padding: "2px 10px" }}>
 
-           {/* Bill View */}
-      {Object.keys(bill).map((table) => (
-        <div
-          key={table}
+                  <span
+                  style={{ backgroundColor: "#fac082", // Light Orange
+                  color: "black",
+                  borderRadius: "5px", 
+                  fontSize: "14px",
+                  padding: "2px 10px" }}
+                  >Total: <strong>₹{bill[table].total.toFixed(2)}</strong>
+                  </span>
+
+          </h4>
+        <button
+          onClick={() => handlePayment(table)}
           style={{
-            marginTop: "20px",
-            padding: "20px",
-            backgroundColor: "#fff",
-            borderRadius: "10px",
-            boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-            marginBottom: "20px",
+            backgroundColor: "#5fa196", // Light Orange
+            color: "black",
+            padding: "10px",
+            borderRadius: "15px",
+            cursor: "pointer",
+            width: "100%",
+            fontSize: "14px",
+            marginTop: "10px",
+            fontWeight: "bold",
+            border:"2px solid black",
+            boxShadow: "0 10px 14px rgba(0, 0, 0, 0.2)",
           }}
         >
-          <h3 style={{ color: "#512DA8", fontWeight: "bold" }}>Bill for Table {bill[table].table}</h3>
-          <ul>
-            {bill[table].items.map((item, index) => (
-              <li key={index}>
-                {item.itemName} - Qty: {item.quantity} - ₹{item.quantity * item.price}
-              </li>
-            ))}
-          </ul>
-          <h4 style={{ fontWeight: "bold" }}>Total: ₹{bill[table].total.toFixed(2)}</h4>
-          <button
-            onClick={() => handlePayment(table)}
-            style={{
-              backgroundColor: "#FFEB3B", // Light Yellow
-              color: "black",
-              padding: "15px",
-              width: "100%",
-              borderRadius: "5px",
-              fontSize: "18px",
-              cursor: "pointer",
-              marginTop: "10px",
-            }}
-          >
-            Payment Done
-          </button>
-        </div>
-      ))}
-        </div>
-      )}
+          Payment Done
+        </button>
+      </div>
+    ))}
+    </div>
+      
+    )}
 
       {/* Show Orders View */}
       {role === "Show Orders" && (
