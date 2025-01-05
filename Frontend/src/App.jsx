@@ -416,22 +416,22 @@ const handlePayment = async (table) => {
       {/* Table Selection */}
 {role == "Take Order" && (
   <div>
-    <h3 style={{ textAlign: "center", color: "#333", fontWeight: "bold", fontSize: "24px", marginBottom: "20px" }}>Select Table</h3>
-    <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", marginBottom: "20px" }}>
+    <h3 style={{ textAlign: "center", color: "#333", fontWeight: "bold", fontSize: "20px", marginBottom: "10px" }}>Select Table</h3>
+    <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", marginBottom: "10px" }}>
       {[1, 2, 3, 4, 5, 6].map((table) => (
         <button
           key={table}
           onClick={() => TableData(table)}
           style={{
-            padding: "12px",
-            margin: "10px",
-            width: "130px",
+            padding: "10px",
+            margin: "5px",
+            // width: "130px",
             backgroundColor: selectedTable === table ? "#b50e2d" : "#ddd",  // Premium red for active, soft gray for inactive
             color: "white",
             border: "none",
             borderRadius: "15px",  // More rounded for a modern premium look
             fontWeight: selectedTable === table ? "bold" : "normal", 
-            fontSize: "18px",  // Slightly larger font size for better readability
+            fontSize: "14px",  // Slightly larger font size for better readability
             cursor: "pointer",
             boxShadow: selectedTable === table ? "0 4px 20px rgba(0, 0, 0, 0.2)" : "none",  // Soft shadow on active button
             transition: "all 0.3s ease",  // Smooth transition for hover and active states
