@@ -378,7 +378,7 @@ const handlePayment = async (table) => {
       borderRadius: "12px",  // More rounded corners for a premium feel
       border: "none",
       // width: "120px",
-      fontSize: "14px",
+      fontSize: "13px",
       cursor: "pointer",
       fontWeight: role === "Take Order" ? "bold" : "normal",
       boxShadow: role === "Take Order" ? "0 4px 15px rgba(0, 0, 0, 0.2)" : "none", // Soft shadow for active button
@@ -399,7 +399,7 @@ const handlePayment = async (table) => {
       borderRadius: "12px",  // More rounded corners for a premium feel
       border: "none",
       // width: "120px",
-      fontSize: "14px",
+      fontSize: "13px",
       cursor: "pointer",
       fontWeight: role === "Show Orders" ? "bold" : "normal",
       boxShadow: role === "Show Orders" ? "0 4px 15px rgba(0, 0, 0, 0.2)" : "none", // Soft shadow for active button
@@ -464,7 +464,7 @@ const handlePayment = async (table) => {
               width: "10%",
               marginRight: "5px",
               marginLeft: "5px",
-              padding: "5px",
+              padding: "7px",
               fontSize: "14px",
               borderRadius: "15px",
               border: "1px solid #ccc",
@@ -479,7 +479,7 @@ const handlePayment = async (table) => {
               marginRight: "5px",
               marginLeft: "5px",
               flex: 1,
-              padding: "5px",
+              padding: "7px",
               fontSize: "14px",
               borderRadius: "15px",
               border: "1px solid #ccc",
@@ -501,7 +501,7 @@ const handlePayment = async (table) => {
                   padding: "4px 15px",
                   marginLeft: "10px",
                   cursor: "pointer",
-                  fontSize: "12px",
+                  fontSize: "13px",
                   borderRadius: "20px",
                 }}
               >
