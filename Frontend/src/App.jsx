@@ -372,7 +372,7 @@ const handlePayment = async (table) => {
     onClick={() => setRole("Take Order")}
     style={{
       padding: "10px",
-      backgroundColor: role === "Take Order" ? "#b50e2d" : "#ddd",  // Dark red for active state
+      backgroundColor: role === "Take Order" ? "#b50e2d" : "#9e9e9e",  // Dark red for active state
       color: "white",
       margin: "5px",
       borderRadius: "12px",  // More rounded corners for a premium feel
@@ -385,7 +385,7 @@ const handlePayment = async (table) => {
       transition: "all 0.3s ease",  // Smooth transition for hover and active states
     }}
     onMouseEnter={(e) => e.target.style.backgroundColor = "#d91e3c"}  // Hover state
-    onMouseLeave={(e) => e.target.style.backgroundColor = role === "Take Order" ? "#b50e2d" : "#ddd"}  // Reset on hover leave
+    onMouseLeave={(e) => e.target.style.backgroundColor = role === "Take Order" ? "#b50e2d" : "#9e9e9e"}  // Reset on hover leave
   >
     Take Order
   </button>
@@ -393,7 +393,7 @@ const handlePayment = async (table) => {
     onClick={() => setRole("Show Orders")}
     style={{
       padding: "10px",
-      backgroundColor: role === "Show Orders" ? "#b50e2d" : "#ddd",  // Dark red for active state
+      backgroundColor: role === "Show Orders" ? "#b50e2d" : "#9e9e9e",  // Dark red for active state
       color: "white",
       margin: "5px",
       borderRadius: "12px",  // More rounded corners for a premium feel
@@ -406,7 +406,7 @@ const handlePayment = async (table) => {
       transition: "all 0.3s ease",  // Smooth transition for hover and active states
     }}
     onMouseEnter={(e) => e.target.style.backgroundColor = "#d91e3c"}  // Hover state
-    onMouseLeave={(e) => e.target.style.backgroundColor = role === "Show Orders" ? "#b50e2d" : "#ddd"}  // Reset on hover leave
+    onMouseLeave={(e) => e.target.style.backgroundColor = role === "Show Orders" ? "#b50e2d" : "#9e9e9e"}  // Reset on hover leave
   >
     Show Orders
   </button>
@@ -426,7 +426,7 @@ const handlePayment = async (table) => {
             padding: "10px",
             margin: "5px",
             // width: "130px",
-            backgroundColor: selectedTable === table ? "#b50e2d" : "#ddd",  // Premium red for active, soft gray for inactive
+            backgroundColor: selectedTable === table ? "#b50e2d" : "#9e9e9e",  // Premium red for active, soft gray for inactive
             color: "white",
             border: "none",
             borderRadius: "15px",  // More rounded for a modern premium look
@@ -437,7 +437,7 @@ const handlePayment = async (table) => {
             transition: "all 0.3s ease",  // Smooth transition for hover and active states
           }}
           onMouseEnter={(e) => e.target.style.backgroundColor = "#d91e3c"}  // Hover effect
-          onMouseLeave={(e) => e.target.style.backgroundColor = selectedTable === table ? "#b50e2d" : "#ddd"}  // Reset on hover leave
+          onMouseLeave={(e) => e.target.style.backgroundColor = selectedTable === table ? "#b50e2d" : "#9e9e9e"}  // Reset on hover leave
         >
           Table {table}
         </button>
