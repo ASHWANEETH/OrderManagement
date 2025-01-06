@@ -679,15 +679,129 @@ const handlePayment = async (table) => {
         }}
       >
         <h3 style={{ color: "black", fontWeight: "bold" ,marginBottom: "10px"}}>Bill for Table {bill[table].table}</h3>
-        <ul style={{ padding: "0px 10px" }}>
-          {bill[table].items.map((item, index) => (
-            <li style={{ color: "black", fontSize: "14px",}}  key={index}>
-              {item.itemName} &nbsp; Qty: {item.quantity} × ₹{item.price} = ₹{item.quantity * item.price}
-            </li>
-          ))}
-        </ul>
+        <table
+  style={{
+    width: "100%",
+    borderCollapse: "collapse",
+    margin: "10px 0",
+    color: "black",
+    fontSize: "14px",
+  }}
+>
+  <thead>
+    <tr>
+      <th
+        style={{
+          border: "1px solid black",
+          padding: "8px",
+          textAlign: "left",
+          backgroundColor: "#f2f2f2",
+        }}
+      >
+        Item Name
+      </th>
+      <th
+        style={{
+          border: "1px solid black",
+          padding: "8px",
+          textAlign: "center",
+          backgroundColor: "#f2f2f2",
+        }}
+      >
+        Quantity
+      </th>
+      <th
+        style={{
+          border: "1px solid black",
+          padding: "8px",
+          textAlign: "center",
+          backgroundColor: "#f2f2f2",
+        }}
+      >
+        Price (₹)
+      </th>
+      <th
+        style={{
+          border: "1px solid black",
+          padding: "8px",
+          textAlign: "center",
+          backgroundColor: "#f2f2f2",
+        }}
+      >
+        Total (₹)
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {bill[table].items.map((item, index) => (
+      <tr key={index}>
+        <td
+          style={{
+            border: "1px solid black",
+            padding: "8px",
+          }}
+        >
+          {item.itemName}
+        </td>
+        <td
+          style={{
+            border: "1px solid black",
+            padding: "8px",
+            textAlign: "center",
+          }}
+        >
+          {item.quantity}
+        </td>
+        <td
+          style={{
+            border: "1px solid black",
+            padding: "8px",
+            textAlign: "center",
+          }}
+        >
+          ₹{item.price}
+        </td>
+        <td
+          style={{
+            border: "1px solid black",
+            padding: "8px",
+            textAlign: "center",
+          }}
+        >
+          ₹{item.quantity * item.price}
+        </td>
+      </tr>
+    ))}
+   <tr>
+      <td
+        colSpan="3"
+        style={{
+          border: "1px solid black",
+          padding: "8px",
+          textAlign: "right",
+          fontWeight: "bold",
+          backgroundColor: "#fac082",
+        }}
+      >
+        Total:
+      </td>
+      <td
+        style={{
+          border: "1px solid black",
+          padding: "8px",
+          textAlign: "center",
+          fontWeight: "bold",
+          backgroundColor: "#fac082",
+        }}
+      >
+        ₹{bill[table].total.toFixed(2)}
+      </td>
+    </tr>
+  </tbody>
+</table>
+
         
-        <h4 style={{ padding: "2px 10px" }}>
+        {/* <h4 style={{ padding: "2px 10px" }}>
 
                   <span
                   style={{ backgroundColor: "#fac082", // Light Orange
@@ -698,7 +812,7 @@ const handlePayment = async (table) => {
                   >Total: <strong>₹{bill[table].total.toFixed(2)}</strong>
                   </span>
 
-          </h4>
+          </h4> */}
         <button
           onClick={() => handlePayment(table)}
           style={{
@@ -722,6 +836,7 @@ const handlePayment = async (table) => {
     </div>
       
     )}
+
 
       {/* Show Orders View */}
       {role === "Show Orders" && (
