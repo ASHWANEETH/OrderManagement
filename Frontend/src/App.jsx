@@ -663,65 +663,106 @@ const handlePayment = async (table) => {
         }
 
  {/* Bill View */}
-        
- {Object.keys(bill).map((table) => (
-      
-      
-      <div
-        key={table}
+{Object.keys(bill).map((table) => (
+  <div
+    key={table}
+    style={{
+      marginTop: "10px",
+      padding: "10px",
+      backgroundColor: "#fff",
+      borderRadius: "10px",
+      boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+    }}
+  >
+    <h3
+      style={{
+        color: "black",
+        fontWeight: "bold",
+        marginBottom: "10px",
+      }}
+    >
+      Bill for Table {bill[table].table}
+    </h3>
+
+    {/* Bill Table */}
+    <table
+      style={{
+        width: "100%",
+        borderCollapse: "collapse",
+        marginBottom: "10px",
+      }}
+    >
+      <thead>
+        <tr style={{ backgroundColor: "#f4f4f4" }}>
+          <th style={tableHeaderStyle}>Item</th>
+          <th style={tableHeaderStyle}>Qty</th>
+          <th style={tableHeaderStyle}>Price (₹)</th>
+          <th style={tableHeaderStyle}>Total (₹)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {bill[table].items.map((item, index) => (
+          <tr key={index}>
+            <td style={tableCellStyle}>{item.itemName}</td>
+            <td style={tableCellStyle}>{item.quantity}</td>
+            <td style={tableCellStyle}>{item.price}</td>
+            <td style={tableCellStyle}>{item.quantity * item.price}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+
+    {/* Total */}
+    <h4 style={{ padding: "2px 10px" }}>
+      <span
         style={{
-          marginTop: "10px",
-          padding: "10px",
-          backgroundColor: "#fff",
-          borderRadius: "10px",
-          boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-          // marginBottom: "20px",
+          backgroundColor: "#fac082", // Light Orange
+          color: "black",
+          borderRadius: "5px",
+          fontSize: "14px",
+          padding: "2px 10px",
         }}
       >
-        <h3 style={{ color: "black", fontWeight: "bold" ,marginBottom: "10px"}}>Bill for Table {bill[table].table}</h3>
-        <ul style={{ padding: "0px 10px" }}>
-          {bill[table].items.map((item, index) => (
-            <li style={{ color: "black", fontSize: "14px",}}  key={index}>
-              {item.itemName} &nbsp; Qty: {item.quantity} × ₹{item.price} = ₹{item.quantity * item.price}
-            </li>
-          ))}
-        </ul>
-        
-        <h4 style={{ padding: "2px 10px" }}>
+        Total: <strong>₹{bill[table].total.toFixed(2)}</strong>
+      </span>
+    </h4>
 
-                  <span
-                  style={{ backgroundColor: "#fac082", // Light Orange
-                  color: "black",
-                  borderRadius: "5px", 
-                  fontSize: "14px",
-                  padding: "2px 10px" }}
-                  >Total: <strong>₹{bill[table].total.toFixed(2)}</strong>
-                  </span>
+    {/* Payment Button */}
+    <button
+      onClick={() => handlePayment(table)}
+      style={{
+        backgroundColor: "#5fa196", // Light Orange
+        color: "black",
+        padding: "10px",
+        borderRadius: "15px",
+        cursor: "pointer",
+        width: "100%",
+        fontSize: "14px",
+        marginTop: "10px",
+        fontWeight: "bold",
+        border: "2px solid black",
+        boxShadow: "0 10px 14px rgba(0, 0, 0, 0.2)",
+      }}
+    >
+      Payment Done
+    </button>
+  </div>
+))}
 
-          </h4>
-        <button
-          onClick={() => handlePayment(table)}
-          style={{
-            backgroundColor: "#5fa196", // Light Orange
-            color: "black",
-            padding: "10px",
-            borderRadius: "15px",
-            cursor: "pointer",
-            width: "100%",
-            fontSize: "14px",
-            marginTop: "10px",
-            fontWeight: "bold",
-            border:"2px solid black",
-            boxShadow: "0 10px 14px rgba(0, 0, 0, 0.2)",
-          }}
-        >
-          Payment Done
-        </button>
-      </div>
-    ))}
-    </div>
-      
-    )}
+// Styles for table cells and headers
+const tableHeaderStyle = {
+  padding: "10px",
+  border: "1px solid black",
+  textAlign: "center",
+  fontWeight: "bold",
+  backgroundColor: "#e0e0e0",
+};
+
+const tableCellStyle = {
+  padding: "10px",
+  border: "1px solid black",
+  textAlign: "center",
+};
 
       {/* Show Orders View */}
       {role === "Show Orders" && (
