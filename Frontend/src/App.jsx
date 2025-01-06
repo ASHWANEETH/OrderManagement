@@ -718,7 +718,7 @@ const handlePayment = async (table) => {
           backgroundColor: "#f2f2f2",
         }}
       >
-        Price (₹)
+        Price
       </th>
       <th
         style={{
@@ -728,7 +728,7 @@ const handlePayment = async (table) => {
           backgroundColor: "#f2f2f2",
         }}
       >
-        Total (₹)
+        Sub-Total
       </th>
     </tr>
   </thead>
@@ -783,7 +783,7 @@ const handlePayment = async (table) => {
           backgroundColor: "#fac082",
         }}
       >
-        Total:
+        Total Amount:
       </td>
       <td
         style={{
