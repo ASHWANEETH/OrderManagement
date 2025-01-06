@@ -681,10 +681,15 @@ const handlePayment = async (table) => {
           </div>
         )
         }
+    </div>
+      
+    )}
 
- {/* Bill View */}
+{role === "Bills" && (
+<>
+{/* Bill View */}
         
- {Object.keys(bill).map((table) => (
+{Object.keys(bill).map((table) => (
       
       
       <div
@@ -853,10 +858,7 @@ const handlePayment = async (table) => {
         </button>
       </div>
     ))}
-    </div>
-      
-    )}
-
+    </>)}
 
       {/* Show Orders View */}
       {role === "Show Orders" && (
