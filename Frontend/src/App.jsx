@@ -300,15 +300,15 @@ export const App = () => {
 
   return (
     <div
-    style={{
-      fontFamily: "Arial, sans-serif",
-      padding: "2px 10px",
-      backgroundColor: "#f4f4f4",
-  //     backgroundImage:"url('/bg.jpg')",
-  //     backgroundSize: "", // Ensures the image fits within the div
-  // // backgroundPosition: "center", // Centers the image
-  // backgroundRepeat: "no-repeat",
-    }}
+      style={{
+        fontFamily: "Arial, sans-serif",
+        padding: "2px 10px",
+        backgroundColor: "#f4f4f4",
+        //     backgroundImage:"url('/bg.jpg')",
+        //     backgroundSize: "", // Ensures the image fits within the div
+        // // backgroundPosition: "center", // Centers the image
+        // backgroundRepeat: "no-repeat",
+      }}
     >
       {loading && <LoadingScreen />}
       {/* Notifications */}
@@ -365,8 +365,8 @@ export const App = () => {
           }}
           onMouseEnter={(e) => (e.target.style.backgroundColor = "#d91e3c")} // Hover state
           onMouseLeave={(e) =>
-          (e.target.style.backgroundColor =
-            role === "Take Order" ? "#b50e2d" : "#9e9e9e")
+            (e.target.style.backgroundColor =
+              role === "Take Order" ? "#b50e2d" : "#9e9e9e")
           } // Reset on hover leave
         >
           Take Order
@@ -391,8 +391,8 @@ export const App = () => {
           }}
           onMouseEnter={(e) => (e.target.style.backgroundColor = "#d91e3c")} // Hover state
           onMouseLeave={(e) =>
-          (e.target.style.backgroundColor =
-            role === "Show Orders" ? "#b50e2d" : "#9e9e9e")
+            (e.target.style.backgroundColor =
+              role === "Show Orders" ? "#b50e2d" : "#9e9e9e")
           } // Reset on hover leave
         >
           Show Orders
@@ -416,8 +416,8 @@ export const App = () => {
           }}
           onMouseEnter={(e) => (e.target.style.backgroundColor = "#d91e3c")} // Hover state
           onMouseLeave={(e) =>
-          (e.target.style.backgroundColor =
-            role === "Bills" ? "#b50e2d" : "#9e9e9e")
+            (e.target.style.backgroundColor =
+              role === "Bills" ? "#b50e2d" : "#9e9e9e")
           } // Reset on hover leave
         >
           Bills
@@ -472,8 +472,8 @@ export const App = () => {
                   (e.target.style.backgroundColor = "#d91e3c")
                 } // Hover effect
                 onMouseLeave={(e) =>
-                (e.target.style.backgroundColor =
-                  selectedTable === table ? "#b50e2d" : "#9e9e9e")
+                  (e.target.style.backgroundColor =
+                    selectedTable === table ? "#b50e2d" : "#9e9e9e")
                 } // Reset on hover leave
               >
                 Table {table}
@@ -628,96 +628,111 @@ export const App = () => {
 `}</style>
 
           {/* Order View */}
-          {orders[selectedTable]?.length > 0 && (
-            <div
+
+          <div
+            style={{
+              marginTop: "10px",
+              padding: "15px",
+              backgroundColor: "#fff",
+              borderRadius: "10px",
+              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+              marginBottom: "10px",
+            }}
+          >
+            <h4
               style={{
-                marginTop: "10px",
-                padding: "15px",
-                backgroundColor: "#fff",
-                borderRadius: "10px",
-                boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+                color: "black",
+                fontWeight: "bold",
                 marginBottom: "10px",
               }}
             >
-              <h4
-                style={{
-                  color: "black",
-                  fontWeight: "bold",
-                  marginBottom: "10px",
-                }}
-              >
-                Order Details
-              </h4>
-              <ul style={{ padding: "0px 10px" }}>
-                {orders[selectedTable].map((item, index) => (
-                  <li
-                    key={index}
-                    style={{
-                      // marginBottom: "5px",
-                      padding: "2px ",
-                      listStyle: "none",
-                    }}
-                  >
-                    <div
+              Order Details
+            </h4>
+
+            {orders[selectedTable].length > 0 ? (
+              <div>
+                <ul style={{ padding: "0px 10px" }}>
+                  {orders[selectedTable].map((item, index) => (
+                    <li
+                      key={index}
                       style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        // fontStyle: "italic",
-                        color: "black",
-                        fontSize: "16px",
-                        fontWeight: "bold",
-                        // width: "90%",
+                        // marginBottom: "5px",
+                        padding: "2px ",
                         listStyle: "none",
-                        borderRadius: "8px",
-                        padding: "3px 10px",
-                        backgroundColor: "#f5f0d7",
-                        // boxShadow: "0 10px 14px rgba(0, 0, 0, 0.2)",
                       }}
                     >
-                      {item.quantity}x {item.itemName}
-                      <button
-                        onClick={() => triggerRemoveConfirmation(index)}
+                      <div
                         style={{
-                          backgroundColor: "#F44336", // Red
-                          color: "white",
-                          border: "none",
-                          borderRadius: "8px",
-                          padding: "2px 15px",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          // fontStyle: "italic",
+                          color: "black",
                           fontSize: "16px",
-                          marginLeft: "10px",
-                          cursor: "pointer",
-                          boxShadow: "0 10px 14px rgba(0, 0, 0, 0.2)",
                           fontWeight: "bold",
+                          // width: "90%",
+                          listStyle: "none",
+                          borderRadius: "8px",
+                          padding: "3px 10px",
+                          backgroundColor: "#f5f0d7",
+                          // boxShadow: "0 10px 14px rgba(0, 0, 0, 0.2)",
                         }}
                       >
-                        ×
-                      </button>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-              <center>
-                <button
-                  onClick={createBill}
-                  style={{
-                    backgroundColor: "#fac082", // Light Orange
-                    color: "black",
-                    padding: "10px",
-                    borderRadius: "15px",
-                    cursor: "pointer",
-                    width: "100%",
-                    fontSize: "15px",
-                    marginTop: "10px",
-                    fontWeight: "bold",
-                    border: "2px solid black",
-                    boxShadow: "0 10px 14px rgba(0, 0, 0, 0.2)",
-                  }}
-                >
-                  Create Bill
-                </button>
-              </center>
-            </div>
-          )}
+                        {item.quantity}x {item.itemName}
+                        <button
+                          onClick={() => triggerRemoveConfirmation(index)}
+                          style={{
+                            backgroundColor: "#F44336", // Red
+                            color: "white",
+                            border: "none",
+                            borderRadius: "8px",
+                            padding: "2px 15px",
+                            fontSize: "16px",
+                            marginLeft: "10px",
+                            cursor: "pointer",
+                            boxShadow: "0 10px 14px rgba(0, 0, 0, 0.2)",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          ×
+                        </button>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+                <center>
+                  <button
+                    onClick={createBill}
+                    style={{
+                      backgroundColor: "#fac082", // Light Orange
+                      color: "black",
+                      padding: "10px",
+                      borderRadius: "15px",
+                      cursor: "pointer",
+                      width: "100%",
+                      fontSize: "14px",
+                      marginTop: "10px",
+                      fontWeight: "bold",
+                      border: "2px solid black",
+                      boxShadow: "0 10px 14px rgba(0, 0, 0, 0.2)",
+                    }}
+                  >
+                    Create Bill
+                  </button>
+                </center>
+              </div>
+            ) : (
+              <p
+                style={{
+                  fontStyle: "italic",
+                  color: "#999",
+                  paddingLeft: "15px",
+                  marginTop: "5px",
+                }}
+              >
+                No Items Added into order..
+              </p>
+            )}
+          </div>
         </div>
       )}
 
