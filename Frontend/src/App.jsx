@@ -388,6 +388,7 @@ const handlePayment = async (table) => {
   >
     Take Order
   </button>
+
   <button
     onClick={() => setRole("Show Orders")}
     style={{
@@ -421,8 +422,8 @@ const handlePayment = async (table) => {
     // width: "120px",
     fontSize: "14px",
     cursor: "pointer",
-    fontWeight: role === "Show Orders" ? "bold" : "normal",
-    boxShadow: role === "Show Orders" ? "0 4px 15px rgba(0, 0, 0, 0.2)" : "none", // Soft shadow for active button
+    fontWeight: role === "Bills" ? "bold" : "normal",
+    boxShadow: role === "Bills" ? "0 4px 15px rgba(0, 0, 0, 0.2)" : "none", // Soft shadow for active button
     transition: "all 0.3s ease",  // Smooth transition for hover and active states
   }}
   onMouseEnter={(e) => e.target.style.backgroundColor = "#d91e3c"}  // Hover state
