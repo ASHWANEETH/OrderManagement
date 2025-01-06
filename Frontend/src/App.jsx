@@ -878,7 +878,7 @@ export const App = () => {
               <button
                 onClick={() => handlePayment(table)}
                 style={{
-                  backgroundColor: "#5fa196", // Light Orange
+                  backgroundColor: "#88d1c5",
                   color: "black",
                   padding: "10px",
                   borderRadius: "15px",
