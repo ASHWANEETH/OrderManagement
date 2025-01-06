@@ -649,7 +649,7 @@ export const App = () => {
               Order Details
             </h4>
 
-            {orders[selectedTable].length > 0 ? (
+            {orders[selectedTable]?.length > 0 ? (
               <div>
                 <ul style={{ padding: "0px 10px" }}>
                   {orders[selectedTable].map((item, index) => (
