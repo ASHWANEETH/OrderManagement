@@ -300,11 +300,15 @@ export const App = () => {
 
   return (
     <div
-      style={{
-        fontFamily: "Arial, sans-serif",
-        padding: "2px 10px",
-        backgroundColor: "#f4f4f4",
-      }}
+    style={{
+      fontFamily: "Arial, sans-serif",
+      padding: "2px 10px",
+      backgroundColor: "#f4f4f4",
+      backgroundImage:"url('/bg.jpg')",
+      backgroundSize: "", // Ensures the image fits within the div
+  // backgroundPosition: "center", // Centers the image
+  backgroundRepeat: "no-repeat",
+    }}
     >
       {loading && <LoadingScreen />}
       {/* Notifications */}
