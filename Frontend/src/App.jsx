@@ -95,9 +95,10 @@ export const App = () => {
   };
 
   useEffect(() => {
-    if (role === "Show Orders") {
+    if (role === "Show Orders" || role === "Bills") {
       const interval = setInterval(() => {
         ShowDataOrder(); // Fetch updated orders every 1 second
+        fetchDataBills();
       }, 1000);
 
       return () => clearInterval(interval); // Cleanup interval on unmount
