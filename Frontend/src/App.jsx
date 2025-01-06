@@ -361,8 +361,8 @@ export const App = () => {
           }}
           onMouseEnter={(e) => (e.target.style.backgroundColor = "#d91e3c")} // Hover state
           onMouseLeave={(e) =>
-            (e.target.style.backgroundColor =
-              role === "Take Order" ? "#b50e2d" : "#9e9e9e")
+          (e.target.style.backgroundColor =
+            role === "Take Order" ? "#b50e2d" : "#9e9e9e")
           } // Reset on hover leave
         >
           Take Order
@@ -387,8 +387,8 @@ export const App = () => {
           }}
           onMouseEnter={(e) => (e.target.style.backgroundColor = "#d91e3c")} // Hover state
           onMouseLeave={(e) =>
-            (e.target.style.backgroundColor =
-              role === "Show Orders" ? "#b50e2d" : "#9e9e9e")
+          (e.target.style.backgroundColor =
+            role === "Show Orders" ? "#b50e2d" : "#9e9e9e")
           } // Reset on hover leave
         >
           Show Orders
@@ -412,8 +412,8 @@ export const App = () => {
           }}
           onMouseEnter={(e) => (e.target.style.backgroundColor = "#d91e3c")} // Hover state
           onMouseLeave={(e) =>
-            (e.target.style.backgroundColor =
-              role === "Bills" ? "#b50e2d" : "#9e9e9e")
+          (e.target.style.backgroundColor =
+            role === "Bills" ? "#b50e2d" : "#9e9e9e")
           } // Reset on hover leave
         >
           Bills
@@ -468,8 +468,8 @@ export const App = () => {
                   (e.target.style.backgroundColor = "#d91e3c")
                 } // Hover effect
                 onMouseLeave={(e) =>
-                  (e.target.style.backgroundColor =
-                    selectedTable === table ? "#b50e2d" : "#9e9e9e")
+                (e.target.style.backgroundColor =
+                  selectedTable === table ? "#b50e2d" : "#9e9e9e")
                 } // Reset on hover leave
               >
                 Table {table}
