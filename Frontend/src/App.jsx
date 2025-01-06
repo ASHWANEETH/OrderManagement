@@ -321,7 +321,7 @@ export const App = () => {
             padding: "10px 20px",
             borderRadius: "5px",
             boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-            fontSize: "14px",
+            fontSize: "15px",
             zIndex: 1000,
             alignContent:"center"
           }}
@@ -345,14 +345,14 @@ export const App = () => {
         <button
           onClick={() => setRole("Take Order")}
           style={{
-            padding: "10px",
+            padding: "15px",
             backgroundColor: role === "Take Order" ? "#b50e2d" : "#9e9e9e", // Dark red for active state
             color: "white",
             margin: "5px",
             borderRadius: "12px", // More rounded corners for a premium feel
             border: "none",
             // width: "120px",
-            fontSize: "14px",
+            fontSize: "15px",
             cursor: "pointer",
             fontWeight: role === "Take Order" ? "bold" : "normal",
             boxShadow:
@@ -371,14 +371,14 @@ export const App = () => {
         <button
           onClick={() => setRole("Show Orders")}
           style={{
-            padding: "10px",
+            padding: "15px",
             backgroundColor: role === "Show Orders" ? "#b50e2d" : "#9e9e9e", // Dark red for active state
             color: "white",
             margin: "5px",
             borderRadius: "12px", // More rounded corners for a premium feel
             border: "none",
             // width: "120px",
-            fontSize: "14px",
+            fontSize: "15px",
             cursor: "pointer",
             fontWeight: role === "Show Orders" ? "bold" : "normal",
             boxShadow:
@@ -396,14 +396,14 @@ export const App = () => {
         <button
           onClick={() => setRole("Bills")}
           style={{
-            padding: "10px",
+            padding: "15px",
             backgroundColor: role === "Bills" ? "#b50e2d" : "#9e9e9e", // Dark red for active state
             color: "white",
             margin: "5px",
             borderRadius: "12px", // More rounded corners for a premium feel
             border: "none",
             // width: "120px",
-            fontSize: "14px",
+            fontSize: "15px",
             cursor: "pointer",
             fontWeight: role === "Bills" ? "bold" : "normal",
             boxShadow:
@@ -456,7 +456,7 @@ export const App = () => {
                   border: "none",
                   borderRadius: "15px", // More rounded for a modern premium look
                   fontWeight: selectedTable === table ? "bold" : "normal",
-                  fontSize: "14px", // Slightly larger font size for better readability
+                  fontSize: "15px", // Slightly larger font size for better readability
                   cursor: "pointer",
                   boxShadow:
                     selectedTable === table
@@ -500,7 +500,7 @@ export const App = () => {
                 marginRight: "5px",
                 marginLeft: "5px",
                 padding: "7px",
-                fontSize: "14px",
+                fontSize: "15px",
                 borderRadius: "15px",
                 border: "1px solid #ccc",
               }}
@@ -515,7 +515,7 @@ export const App = () => {
                 marginLeft: "5px",
                 flex: 1,
                 padding: "7px",
-                fontSize: "14px",
+                fontSize: "15px",
                 borderRadius: "15px",
                 border: "1px solid #ccc",
               }}
@@ -528,7 +528,7 @@ export const App = () => {
               <div
                 key={index}
                 style={{
-                  fontSize: "14px",
+                  fontSize: "15px",
                   padding: "5px",
                   marginBottom: "2px",
                   fontWeight: "bold",
@@ -702,7 +702,7 @@ export const App = () => {
                     borderRadius: "15px",
                     cursor: "pointer",
                     width: "100%",
-                    fontSize: "14px",
+                    fontSize: "15px",
                     marginTop: "10px",
                     fontWeight: "bold",
                     border: "2px solid black",
@@ -748,7 +748,7 @@ export const App = () => {
                   borderCollapse: "collapse",
                   margin: "10px 0",
                   color: "black",
-                  fontSize: "14px",
+                  fontSize: "15px",
                 }}
               >
                 <thead>
@@ -869,7 +869,7 @@ export const App = () => {
                   style={{ backgroundColor: "#fac082", // Light Orange
                   color: "black",
                   borderRadius: "5px", 
-                  fontSize: "14px",
+                  fontSize: "15px",
                   padding: "2px 10px" }}
                   >Total: <strong>₹{bill[table].total.toFixed(2)}</strong>
                   </span>
@@ -884,7 +884,7 @@ export const App = () => {
                   borderRadius: "15px",
                   cursor: "pointer",
                   width: "100%",
-                  fontSize: "14px",
+                  fontSize: "15px",
                   marginTop: "10px",
                   fontWeight: "bold",
                   border: "2px solid black",
@@ -941,7 +941,7 @@ export const App = () => {
                             style={{
                               fontStyle: "italic",
                               color: "white",
-                              fontSize: "14px",
+                              fontSize: "15px",
                               // marginBottom: "5px",
                               listStyle: "none",
                               border: "1px solid grey",
@@ -1034,7 +1034,7 @@ const styles = {
   },
   loadingText: {
     marginTop: "10px",
-    fontSize: "14px",
+    fontSize: "15px",
     fontWeight: "bold",
     color: "black",
     fontFamily: "Arial, sans-serif",
