@@ -409,6 +409,27 @@ const handlePayment = async (table) => {
   >
     Show Orders
   </button>
+  <button
+  onClick={() => setRole("Bills")}
+  style={{
+    padding: "10px",
+    backgroundColor: role === "Bills" ? "#b50e2d" : "#9e9e9e",  // Dark red for active state
+    color: "white",
+    margin: "5px",
+    borderRadius: "12px",  // More rounded corners for a premium feel
+    border: "none",
+    // width: "120px",
+    fontSize: "14px",
+    cursor: "pointer",
+    fontWeight: role === "Show Orders" ? "bold" : "normal",
+    boxShadow: role === "Show Orders" ? "0 4px 15px rgba(0, 0, 0, 0.2)" : "none", // Soft shadow for active button
+    transition: "all 0.3s ease",  // Smooth transition for hover and active states
+  }}
+  onMouseEnter={(e) => e.target.style.backgroundColor = "#d91e3c"}  // Hover state
+  onMouseLeave={(e) => e.target.style.backgroundColor = role === "Bills" ? "#b50e2d" : "#9e9e9e"}  // Reset on hover leave
+>
+  Bills
+</button>
 </div>
 
 
