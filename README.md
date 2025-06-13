@@ -4,7 +4,9 @@
 _**Streamlining Orders, Elevating Customer Experience Instantly**_
 
 ![Last Commit](https://img.shields.io/github/last-commit/ASHWANEETH/OrderManagement?style=for-the-badge)
+
 ![JavaScript](https://img.shields.io/badge/language-JavaScript-yellow?style=for-the-badge)
+
 ![Repo Size](https://img.shields.io/github/repo-size/ASHWANEETH/OrderManagement?style=for-the-badge)
 
 ---
