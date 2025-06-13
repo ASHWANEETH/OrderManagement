@@ -1,3 +1,4 @@
+
 # 🚀 ORDERMANAGEMENT
 
 _**Streamlining Orders, Elevating Customer Experience Instantly**_
@@ -13,7 +14,6 @@ _**Streamlining Orders, Elevating Customer Experience Instantly**_
 
 ![Express](https://img.shields.io/badge/-Express-black?style=for-the-badge&logo=express&logoColor=white)
 ![JSON](https://img.shields.io/badge/-JSON-292929?style=for-the-badge&logo=json&logoColor=white)
-![Markdown](https://img.shields.io/badge/-Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white)
 ![npm](https://img.shields.io/badge/-npm-CB3837?style=for-the-badge&logo=npm)
 ![Mongoose](https://img.shields.io/badge/-Mongoose-880000?style=for-the-badge&logo=mongoose)
 ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
@@ -26,12 +26,12 @@ _**Streamlining Orders, Elevating Customer Experience Instantly**_
 
 ## 📚 Table of Contents
 
-- [🚀 Overview](#-overview)
-- [⚙️ Installation](#️-installation)
-- [📦 Folder Structure](#-folder-structure)
-- [🧪 Testing](#-testing)
-- [🤝 Contributing](#-contributing)
-- [📝 License](#-license)
+- [Overview](#-overview)
+- [Installation](#️-installation)
+- [Folder Structure](#-folder-structure)
+- [Testing](#-testing)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ---
 
@@ -67,3 +67,50 @@ npm install
 
 # Run frontend
 npm run dev
+```
+
+---
+
+## 📦 Folder Structure
+
+```txt
+OrderManagement/
+├── backend/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   └── app.js
+├── frontend/
+│   ├── components/
+│   ├── pages/
+│   └── main.jsx
+```
+
+---
+
+## 🧪 Testing
+
+> ⚠️ Currently under development  
+Feel free to contribute by adding unit or integration tests.
+
+---
+
+## 🤝 Contributing
+
+1. 🍴 Fork the repo  
+2. 🚀 Create your feature branch (`git checkout -b feature/AmazingFeature`)  
+3. ✅ Commit your changes (`git commit -m 'Add some AmazingFeature'`)  
+4. 📤 Push to the branch (`git push origin feature/AmazingFeature`)  
+5. 📨 Open a Pull Request  
+
+---
+
+## 📝 License
+
+Free to use ! Enjoy..
+
+---
+
+## ✨ Show Your Support
+
+If this project helped you, **give it a star ⭐** and share it!
